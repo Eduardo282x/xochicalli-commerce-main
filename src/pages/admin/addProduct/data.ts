@@ -513,5 +513,3 @@ export const dataInputs: Record<string, CategoryData> = {
         ],
     },
 };
-
-
