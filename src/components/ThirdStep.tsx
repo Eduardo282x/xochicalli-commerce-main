@@ -19,15 +19,8 @@ import { InputData } from "@/pages/admin/addProduct/interface";
 import { SnackbarProvider, enqueueSnackbar } from "notistack";
 import { ArrowBackIcon } from "@chakra-ui/icons";
 import { ComponentInput, ComponentPinInput, ComponentSelect, Duplex, Tags } from "@/pages/admin/addProduct/Component";
-const ThirdStep = ({
-  values,
-  setValue,
-  setStep2,
-}: {
-  values: any;
-  setValue: any;
-  setStep2: any;
-}) => {
+
+const ThirdStep = ({ values, setValue, setStep2,}: { values: any; setValue: any; setStep2: any; }) => {
   const [loading, setLoading] = useState(false)
   const [upload, setUpload] = useState(false);
   const [imageBase64, setImageBase64] = useState("");
@@ -35,19 +28,28 @@ const ThirdStep = ({
   const toast = useToast();
   const data = dataInputs;
   const categories = values?.category;
-  const subcategories = values?.subCategory;
-  const blockInputs: any = data[categories][subcategories] === undefined ?
-    [{
-      name: "datos adicionales",
-      type: "text",
-      component: "input",
-    }]
-    : data[categories][subcategories]
+  const changeNameSubcategory = (subcategories: string): string => {
+    if(subcategories === 'Aromáticas'){
+      return 'ROSAS';
+    };
+    if(subcategories === 'De temporada'){
+      return 'PETALOS';
+    };
+    if(subcategories === 'Exóticas'){
+      return 'CLAVALES';
+    };
+    return subcategories;
+  };
 
-    console.log(categories);
-    console.log(subcategories);
-    console.log(blockInputs);
-    
+  const subcategories = changeNameSubcategory(values?.subCategory);
+  const firstInput = [{
+    name: "datos adicionales",
+    type: "text",
+    component: "input",
+  }];
+
+  const blockInputs: any = data[categories][subcategories] === undefined ? firstInput : data[categories][subcategories]
+
   const handle = (event: any) => {
     const name = event.target.name;
     const value = event.target.value;

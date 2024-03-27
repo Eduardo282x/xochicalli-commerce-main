@@ -9,7 +9,6 @@ const FirstStep = ({ setValue, values }: { setValue: any; values: any }) => {
   const [subCategoryForm, setSubCategoryForm] = useState("");
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const [etiqueta, setEtiqueta] = useState("");
-  console.log(dataCategorias);
   
   const handle = (event: React.ChangeEvent<HTMLSelectElement>) => {
     const name = event.target.name;
