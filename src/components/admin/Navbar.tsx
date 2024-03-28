@@ -59,7 +59,7 @@ const selectProducts: NavbarItems[] = [
     id: 2,
     text: "Productos",
     path: "/admin/products",
-  },
+  }
 ];
 
 
