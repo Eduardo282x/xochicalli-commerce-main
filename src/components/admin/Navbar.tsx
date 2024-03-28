@@ -131,7 +131,6 @@ const Navbar: FC<ActiveUser> = ({ isUser }): JSX.Element => {
                 iconColor='#fff'
                 onChange={handleSelectChange}
                 variant='unstyled'
-                placeholder='opciones de productos'
                 style={{
                   color: "#fff",
                   transition: "all 300ms ease",
