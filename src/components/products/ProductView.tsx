@@ -1,10 +1,6 @@
 import { FC, useContext } from "react";
 
 import {
-  Accordion,
-  AccordionItem,
-  AccordionPanel,
-  Badge,
   Box,
   Button,
   Heading,
@@ -15,8 +11,6 @@ import {
   useMediaQuery,
   useToast,
   VStack,
-  AccordionButton,
-  AccordionIcon
 } from "@chakra-ui/react";
 import { FiShoppingCart } from "react-icons/fi";
 
