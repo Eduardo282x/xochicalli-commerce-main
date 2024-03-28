@@ -14,6 +14,7 @@ import { addComment } from "@/utils";
 import { UserContext } from "@/context";
 import { AddIcon } from "@chakra-ui/icons";
 import { userSchema, guestSchema } from './product.data';
+import { ProductDetails } from "@/components/products/ProductDetails";
 
 const ProductView = lazy(() => import("@/components/products/ProductView"));
 
@@ -134,7 +135,7 @@ const Product: FC = (): JSX.Element => {
               </Suspense>
 
               <Accordion marginTop={'10px'} allowToggle >
-                <AccordionItem>
+                <AccordionItem sx={{borderBottom:'none'}}>
                   <h2>
                     <AccordionButton>
                       <Box fontWeight={700} as="span" flex='1' textAlign='center'>
@@ -144,62 +145,9 @@ const Product: FC = (): JSX.Element => {
                       <AccordionIcon />
                     </AccordionButton>
                   </h2>
-                  <AccordionPanel>
-                    {Object.keys(product ?? {}).map((element, index) => {
-                      const nameObject = `unidad-${element}`;
-                      const unidad = product[nameObject];
-                      const contentProduct = product[element];
-                      const sectionsExclude = ['category', 'description', 'price', 'tags', 'stock', 'title', 'image', 'subCategory']
-
-                      const returnDefault = (title: string, content: string) => {
-                        return (
-                          <Box display={'flex'} sx={{ alignItems: 'flex-end' }} key={index}>
-                            <Text fontWeight={700} fontSize='lg' mt={4}>{title + ": "}</Text>
-                            <Text fontWeight={500}>{content}</Text>
-                          </Box>
-                        )
-                      }
-
-                      if (element === 'Graduacion') {
-                        const longitudGrupo = Math.ceil((contentProduct?.length ?? 3) / 3);
-                        const newData = [contentProduct.substring(0, longitudGrupo), contentProduct.substring(longitudGrupo, longitudGrupo * 2), contentProduct.substring(longitudGrupo * 2)]
-                        return (
-                          <Box>
-                            <Text fontWeight={700} fontSize='lg' mt={4}>{element}</Text>
-                            {newData.map((e) => (
-                              <Badge sx={{ marginRight: '20px' }} variant='subtle' colorScheme='green' key={index * 3} >
-                                {e}
-                              </Badge>
-                            ))
-                            }
-                          </Box>
-                        )
-
-                      }
-                      if (element.includes('unidad') || contentProduct?.length === 0 || element === 'id' || sectionsExclude.includes(element)) return null
-                      if (Array.isArray(contentProduct)) {
-                        return (
-                          <Box>
-                            <Text fontWeight={700} fontSize='lg' mt={4}>{element}</Text>
-                            {
-                              contentProduct.map((e: [], i: any) => (
-                                <Badge sx={{ marginRight: '20px' }} variant='outline' colorScheme='green' key={i} >
-                                  {e}
-                                </Badge>
-                              ))
-                            }
-                          </Box>
-                        )
-                      }
-                      if (product[nameObject] !== undefined) {
-                        return returnDefault(element, (contentProduct + " " + unidad))
-                      }
-                      return (
-                        <Box key={index + 1}>
-                          {returnDefault(element, contentProduct)}
-                        </Box>
-                      )
-                    })
+                  <AccordionPanel sx={{border:'1px', borderColor:'#ddd', padding:'0', borderRadius:'.5rem'}}>
+                    {product && 
+                      <ProductDetails products={product}></ProductDetails>
                     }
                   </AccordionPanel>
                 </AccordionItem>

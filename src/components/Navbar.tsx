@@ -1,4 +1,4 @@
-import { FC } from "react";
+import React, { FC } from "react";
 
 import {
   Box,
@@ -59,7 +59,7 @@ export const Navbar: FC = (): JSX.Element => {
   };
 
   return (
-    <>
+    <React.Fragment>
       {isInLogin !== "/login" && isInLogin !== "/signup" && (
         <Flex
           as="nav"
@@ -228,6 +228,6 @@ export const Navbar: FC = (): JSX.Element => {
           </HStack>
         </Flex>
       )}
-    </>
+    </React.Fragment>
   );
 };
