@@ -20,7 +20,7 @@ import { SnackbarProvider, enqueueSnackbar } from "notistack";
 import { ArrowBackIcon } from "@chakra-ui/icons";
 import { ComponentInput, ComponentPinInput, ComponentSelect, Duplex, Tags } from "@/pages/admin/addProduct/Component";
 
-const ThirdStep = ({ values, setValue, setStep2,}: { values: any; setValue: any; setStep2: any; }) => {
+const ThirdStep = ({ values, setValue, setStep2, }: { values: any; setValue: any; setStep2: any; }) => {
   const [loading, setLoading] = useState(false)
   const [upload, setUpload] = useState(false);
   const [imageBase64, setImageBase64] = useState("");
@@ -29,14 +29,8 @@ const ThirdStep = ({ values, setValue, setStep2,}: { values: any; setValue: any;
   const data = dataInputs;
   const categories = values?.category;
   const changeNameSubcategory = (subcategories: string): string => {
-    if(subcategories === 'Aromáticas'){
+    if (subcategories === 'Aromáticas' || subcategories === 'De temporada' || subcategories === 'Exóticas') {
       return 'ROSAS';
-    };
-    if(subcategories === 'De temporada'){
-      return 'PETALOS';
-    };
-    if(subcategories === 'Exóticas'){
-      return 'CLAVALES';
     };
     return subcategories;
   };
@@ -137,11 +131,11 @@ const ThirdStep = ({ values, setValue, setStep2,}: { values: any; setValue: any;
       case "select":
         return ComponentSelect(name, option, handle, values);
       case "duplex":
-        return Duplex(name, option, type, handle,values);
+        return Duplex(name, option, type, handle, values);
       case "input":
         return ComponentInput(name, type, handle);
       case "tags":
-        return Tags(name, handle,values,setValue);
+        return Tags(name, handle, values, setValue);
       case "pin":
         return ComponentPinInput(name, setValue);
       default:

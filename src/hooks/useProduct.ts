@@ -12,31 +12,31 @@ export const useProduct = (id: string) => {
         return tt
     }
 
-    useEffect(() => {
-        const fetchProduct = async () => {
-            const localDataJson: any = localStorage.getItem('products')
-            const localData: any = localDataJson ? JSON.parse(localDataJson) : [{}]
+    const fetchProduct = async () => {
+        const localDataJson: any = localStorage.getItem('products')
+        const localData: any = localDataJson ? JSON.parse(localDataJson) : [{}]
 
-            setLoading(true)
-            try {
-                const data = await getProduct('products', id)
-                if (Object.keys(data)?.length === 0 ) {
-                    const getData = getProductById(localData, id)
-                    setProductData(getData as Product)
-                    setLoading(false)
+        setLoading(true)
+        try {
+            const data = await getProduct('products', id)
+            if (Object.keys(data)?.length === 0 ) {
+                const getData = getProductById(localData, id)
+                setProductData(getData as Product)
+                setLoading(false)
 
-                } else {
-                    const getData = getProductById(localData, id)
-                    setProductData(getData as Product)
-                    setLoading(false)
-                }
-            } catch (error) {
+            } else {
                 const getData = getProductById(localData, id)
                 setProductData(getData as Product)
                 setLoading(false)
             }
+        } catch (error) {
+            const getData = getProductById(localData, id)
+            setProductData(getData as Product)
+            setLoading(false)
         }
+    }
 
+    useEffect(() => {
         fetchProduct()
     }, [id])
 

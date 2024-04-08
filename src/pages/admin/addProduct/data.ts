@@ -1,4 +1,104 @@
-import { CategoryData } from "./interface";
+import { CategoryData, InputData } from "./interface";
+
+const flores: InputData[] = [
+    {
+        name: "Especie",
+        type: "text",
+        component: "input",
+    },
+    {
+        name: "Variedad",
+        type: "text",
+        component: "input",
+    },
+    {
+        name: "Descripción",
+        type: "text",
+        component: "input",
+    },
+    {
+        name: "Marca",
+        type: "text",
+        component: "input",
+    },
+    {
+        name: "Aroma",
+        type: "text",
+        component: "input",
+    },
+    {
+        name: "Disponibilidad",
+        type: "text",
+        component: "select",
+        option: ["Por temporada", "Aromática", "Exóticas"],
+    },
+    {
+        name: "Floración",
+        type: "text",
+        component: "input",
+    },
+    {
+        name: "Tiempo de vida",
+        type: "text",
+        component: "input",
+    },
+    {
+        name: "Estado",
+        type: "text",
+        component: "input",
+    },
+    {
+        name: "Altura",
+        type: "number",
+        component: "duplex",
+        option: ["Cm", "Mm"],
+    },
+    {
+        name: "Presentación",
+        type: "text",
+        component: "input",
+    },
+    {
+        name: "instrucciones",
+        type: "text",
+        component: "tags",
+    },
+    {
+        name: "Recomendaciones",
+        type: "text",
+        component: "tags",
+    },
+];
+
+const semillas: InputData[] = [
+    {
+        name: "Especie",
+        type: "text",
+        component: "input",
+    },
+    {
+        name: "Variedad",
+        type: "text",
+        component: "input",
+    },
+    {
+        name: "Cantidad",
+        type: "number",
+        component: "input",
+    },
+    {
+        name: "Presentación",
+        type: "text",
+        component: "select",
+        option: ["bolsa", "caja", "paquete", "sobre"],
+    },
+    {
+        name: "Peso",
+        type: "number",
+        component: "duplex",
+        option: ["Gramos", "Miligramos"],
+    },
+];
 
 export const dataInputs: Record<string, CategoryData> = {
     INSUMOS: {
@@ -127,6 +227,16 @@ export const dataInputs: Record<string, CategoryData> = {
         ],
         Herramientas: [
             {
+                name: "Descripción",
+                type: "text",
+                component: "input",
+            },
+            {
+                name: "Marca",
+                type: "text",
+                component: "input",
+            },
+            {
                 name: "Material",
                 type: "text",
                 component: "input",
@@ -158,157 +268,11 @@ export const dataInputs: Record<string, CategoryData> = {
                 name: "Codigo",
                 type: "text",
                 component: "input",
-            },
+            }
         ],
     },
     FLORES: {
-        ROSAS: [
-            {
-                name: "Especie",
-                type: "text",
-                component: "input",
-            },
-            {
-                name: "Aroma",
-                type: "text",
-                component: "input",
-            },
-            {
-                name: "Disponibilidad",
-                type: "text",
-                component: "select",
-                option: ["Por temporada", "Aromática", "Exóticas"],
-            },
-            {
-                name: "Floración",
-                type: "text",
-                component: "input",
-            },
-            {
-                name: "Tiempo de vida",
-                type: "text",
-                component: "input",
-            },
-            {
-                name: "Estado",
-                type: "text",
-                component: "input",
-            },
-            {
-                name: "Altura",
-                type: "number",
-                component: "duplex",
-                option: ["Cm", "Mm"],
-            },
-            {
-                name: "Presentación",
-                type: "text",
-                component: "input",
-            },
-            {
-                name: "instrucciones",
-                type: "text",
-                component: "tags",
-            },
-        ],        
-        PETALOS: [
-            {
-                name: "Especie",
-                type: "text",
-                component: "input",
-            },
-            {
-                name: "Aroma",
-                type: "text",
-                component: "input",
-            },
-            {
-                name: "Disponibilidad",
-                type: "text",
-                component: "select",
-                option: ["Por temporada", "Aromática", "Exóticas"],
-            },
-            {
-                name: "Floración",
-                type: "text",
-                component: "input",
-            },
-            {
-                name: "Tiempo de vida",
-                type: "text",
-                component: "input",
-            },
-            {
-                name: "Estado",
-                type: "text",
-                component: "input",
-            },
-            {
-                name: "Altura",
-                type: "number",
-                component: "duplex",
-                option: ["Cm", "Mm"],
-            },
-            {
-                name: "Presentación",
-                type: "text",
-                component: "input",
-            },
-            {
-                name: "instrucciones",
-                type: "text",
-                component: "tags",
-            },
-        ],
-        CLAVALES: [
-            {
-                name: "Especie",
-                type: "text",
-                component: "input",
-            },
-            {
-                name: "Aroma",
-                type: "text",
-                component: "input",
-            },
-            {
-                name: "Disponibilidad",
-                type: "text",
-                component: "select",
-                option: ["Por temporada", "Aromática", "Exóticas"],
-            },
-            {
-                name: "Floración",
-                type: "text",
-                component: "input",
-            },
-            {
-                name: "Tiempo de vida",
-                type: "text",
-                component: "input",
-            },
-            {
-                name: "Estado",
-                type: "text",
-                component: "input",
-            },
-            {
-                name: "Altura",
-                type: "number",
-                component: "duplex",
-                option: ["Cm", "Mm"],
-            },
-            {
-                name: "Presentación",
-                type: "text",
-                component: "input",
-            },
-            {
-                name: "instrucciones",
-                type: "text",
-                component: "tags",
-            },
-        ]
+        ROSAS: flores
     },
     PLANTAS: {
         Arbustos: [
@@ -482,34 +446,164 @@ export const dataInputs: Record<string, CategoryData> = {
         ],
     },
     SEMILLAS: {
-        Semilla: [
-            {
-                name: "Especie",
-                type: "text",
-                component: "input",
-            },
-            {
-                name: "Variedad",
-                type: "text",
-                component: "input",
-            },
-            {
-                name: "Cantidad",
-                type: "number",
-                component: "input",
-            },
-            {
-                name: "Presentación",
-                type: "text",
-                component: "select",
-                option: ["bolsa", "caja", "paquete", "sobre"],
-            },
-            {
-                name: "Peso",
-                type: "number",
-                component: "duplex",
-                option: ["Gramos", "Miligramos"],
-            },
-        ],
-    },
+        Semilla: semillas
+    }
 };
+
+
+
+// [
+//     {
+//         name: "Especie",
+//         type: "text",
+//         component: "input",
+//     },
+//     {
+//         name: "Aroma",
+//         type: "text",
+//         component: "input",
+//     },
+//     {
+//         name: "Disponibilidad",
+//         type: "text",
+//         component: "select",
+//         option: ["Por temporada", "Aromática", "Exóticas"],
+//     },
+//     {
+//         name: "Floración",
+//         type: "text",
+//         component: "input",
+//     },
+//     {
+//         name: "Tiempo de vida",
+//         type: "text",
+//         component: "input",
+//     },
+//     {
+//         name: "Estado",
+//         type: "text",
+//         component: "input",
+//     },
+//     {
+//         name: "Altura",
+//         type: "number",
+//         component: "duplex",
+//         option: ["Cm", "Mm"],
+//     },
+//     {
+//         name: "Presentación",
+//         type: "text",
+//         component: "input",
+//     },
+//     // {
+//     //     name: "Instrucciones",
+//     //     type: "text",
+//     //     component: "tags",
+//     // },
+//     // {
+//     //     name: "Recomendación",
+//     //     type: "text",
+//     //     component: "tags",
+//     // },
+// ],        
+// PETALOS: [
+//     {
+//         name: "Especie",
+//         type: "text",
+//         component: "input",
+//     },
+//     {
+//         name: "Aroma",
+//         type: "text",
+//         component: "input",
+//     },
+//     {
+//         name: "Disponibilidad",
+//         type: "text",
+//         component: "select",
+//         option: ["Por temporada", "Aromática", "Exóticas"],
+//     },
+//     {
+//         name: "Floración",
+//         type: "text",
+//         component: "input",
+//     },
+//     {
+//         name: "Tiempo de vida",
+//         type: "text",
+//         component: "input",
+//     },
+//     {
+//         name: "Estado",
+//         type: "text",
+//         component: "input",
+//     },
+//     {
+//         name: "Altura",
+//         type: "number",
+//         component: "duplex",
+//         option: ["Cm", "Mm"],
+//     },
+//     {
+//         name: "Presentación",
+//         type: "text",
+//         component: "input",
+//     },
+//     {
+//         name: "instrucciones",
+//         type: "text",
+//         component: "tags",
+//     },
+// ],
+// CLAVALES: [
+//     {
+//         name: "Especie",
+//         type: "text",
+//         component: "input",
+//     },
+//     {
+//         name: "Aroma",
+//         type: "text",
+//         component: "input",
+//     },
+//     {
+//         name: "Disponibilidad",
+//         type: "text",
+//         component: "select",
+//         option: ["Por temporada", "Aromática", "Exóticas"],
+//     },
+//     {
+//         name: "Floración",
+//         type: "text",
+//         component: "input",
+//     },
+//     {
+//         name: "Tiempo de vida",
+//         type: "text",
+//         component: "input",
+//     },
+//     {
+//         name: "Estado",
+//         type: "text",
+//         component: "input",
+//     },
+//     {
+//         name: "Altura",
+//         type: "number",
+//         component: "duplex",
+//         option: ["Cm", "Mm"],
+//     },
+//     {
+//         name: "Presentación",
+//         type: "text",
+//         component: "input",
+//     },
+//     {
+//         name: "instrucciones",
+//         type: "text",
+//         component: "tags",
+//     },
+// ]
+
+
+

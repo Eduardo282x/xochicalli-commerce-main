@@ -17,8 +17,12 @@ export const ProductDetails: FC<ProductsViewDetails> = ({products}) => {
                     {products.Variedad && 
                         <p><span className='imgLeaves'></span> Variedad: {products.Variedad}</p>
                     }
-                    <p><span className='imgNose'></span> Aroma: No tiene</p>
-                    <p><span className='imgDone'></span>Disponibilidad: No tiene</p>
+                    {products.Aroma && 
+                        <p><span className='imgNose'></span> Aroma: {products.Aroma}</p>
+                    }
+                    {products.Disponibilidad && 
+                        <p><span className='imgDone'></span> Disponibilidad: {products.Disponibilidad}</p>
+                    }
                     {products.Floración && 
                         <p><span className='imgFlower'></span>Floración: {products.Floración}</p>
                     }

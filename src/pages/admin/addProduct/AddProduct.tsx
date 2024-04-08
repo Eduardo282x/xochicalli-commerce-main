@@ -8,6 +8,7 @@ import { addProduct } from "@/utils";
 import { useToast } from "@chakra-ui/react";
 import { Value } from "./interface";
 import { v4 } from "uuid";
+import './products.css'
 import { useNavigate } from "react-router-dom";
 
 const AddProduct: FC = (): JSX.Element => {
@@ -33,7 +34,7 @@ const AddProduct: FC = (): JSX.Element => {
     Recomendaciones: []
   });
 
-  console.log("vlaue-2:::>", value);
+  // console.log("vlaue-2:::>", value);
   const navigate = useNavigate();
   const handleGoProducts = () => {
     navigate("/admin/add");
@@ -42,9 +43,11 @@ const AddProduct: FC = (): JSX.Element => {
   const toProduct = (id: string) => navigate(`/products/${id}`);
   const onSubmit = async (values: Value) => {
     try {
-      const submit = await addProduct(values)
-      console.log(submit)
-      setId(submit)
+      console.log('Productos', values);
+      
+      // const submit = await addProduct(values)
+      // console.log(submit)
+      // setId(submit)
       toast({
         title: "Producto subido correctamente",
         duration: 2000,
@@ -82,8 +85,10 @@ const AddProduct: FC = (): JSX.Element => {
           ) : step2 === false ? (
             <>
               <FirstStep setValue={setValue} values={value} />
-              <Button onClick={() => setStep1(false)}>{"Atrás"}</Button>
-              <Button onClick={() => setStep2(true)}>{"Siguiente"}</Button>
+              <div className="btnDisplay">
+                <Button onClick={() => setStep1(false)}>{"Atrás"}</Button>
+                <Button onClick={() => setStep2(true)}>{"Siguiente"}</Button>
+              </div>
             </>
           ) : (
             <>

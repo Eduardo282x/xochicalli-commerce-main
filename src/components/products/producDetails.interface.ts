@@ -4,10 +4,12 @@ export interface ProductsViewDetails {
 
 export interface ProductsDetails {
     category:        string;
+    Aroma:            string;
     "unidad-Ancho":  string;
     tags:            string;
     Floración:       string;
     Especie:         string;
+    Disponibilidad:   string;
     price:           string;
     Presentación:    string;
     instrucciones:   string[];
