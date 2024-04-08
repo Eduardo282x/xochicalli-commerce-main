@@ -9,7 +9,7 @@ export const ProductDetails: FC<ProductsViewDetails> = ({products}) => {
 
     return (
         <div>
-            <div className="main-section">
+            <div className="flex justify-around items-start w-full">
                 <div className="details">
                     {products.Especie && 
                         <p><span className='imgPlant'></span>Especie: {products.Especie}</p>
@@ -52,12 +52,12 @@ export const ProductDetails: FC<ProductsViewDetails> = ({products}) => {
             </div>
             <div className="main-section">
                 <div className="chips-content">
-                    {products.instrucciones.map((re: string, index: number)=> (
+                    {products.instrucciones && products.instrucciones.map((re: string, index: number)=> (
                         <p className={index !== 2 ? 'chips' : 'chips-center'} key={index}>{re}</p>
                     ))}
                 </div>
                 <div className="chips-content">
-                    {products.Recomendaciones.map((re: string, index: number)=> (
+                    {products.Recomendaciones && products.Recomendaciones.map((re: string, index: number)=> (
                         <p className={index !== 2 ? 'chips' : 'chips-center'} key={index}>{re}</p>
                     ))}
                 </div>

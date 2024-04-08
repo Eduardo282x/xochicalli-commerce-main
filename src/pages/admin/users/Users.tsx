@@ -52,64 +52,67 @@ const Users = (props: TableProps) => {
     },
   ];
   return (
-    <Container py={{ base: "4", md: "8" }} px={{ base: "0", md: 8 }}>
-      <Box
-        bg="bg-surface"
-        boxShadow={{ base: "none", md: "sm" }}
-        borderRadius={{ base: "none", md: "lg" }}
-      >
-        <Stack spacing="5">
-          <Box px={{ base: "4", md: "6" }} pt="5">
-            <Stack
-              direction={{ base: "column", md: "row" }}
-              justify="space-between"
-            >
-              <Text fontSize="lg" fontWeight="medium">
-                Usuarios
-              </Text>
-            </Stack>
-          </Box>
-          <Box>
-            <Table>
-              <Thead display={isMobile ? "contents" : ""}>
-                <Tr>
-                  {colums.map((colum, index) => (
-                    <Th key={index}>
-                      {colum.colum === "Email" && isMobile ? "" : colum.colum}
-                    </Th>
-                  ))}
-                </Tr>
-              </Thead>
-              <Tbody>
-                {users.map((member: any) => (
-                  <Tr key={member.id}>
-                    <Td>
-                      <HStack spacing="3">
-                        <Box>
-                          <Text fontWeight="medium">{member.name}</Text>
-                        </Box>
-                      </HStack>
-                    </Td>
-                    <Td display={isMobile ? "none" : "block"}>
-                      <Text color="muted">{member.email}</Text>
-                    </Td>
-                    <Td>
-                      <Text color="muted">{member.role}</Text>
-                    </Td>
-                    <Td>
-                      <HStack spacing="1">
-                        <ManualClose dataUser={member} />
-                        <EditUserModal dataUser={member} />
-                      </HStack>
-                    </Td>
+
+    <div className="bg-white w-[50%] mx-auto my-5 rounded-lg">
+      <Container py={{ base: "4", md: "8" }} px={{ base: "0", md: 8 }}>
+        <Box
+          bg="bg-surface"
+          boxShadow={{ base: "none", md: "sm" }}
+          borderRadius={{ base: "none", md: "lg" }}
+        >
+          <Stack spacing="5">
+            <Box px={{ base: "4", md: "6" }} pt="5">
+              <Stack
+                direction={{ base: "column", md: "row" }}
+                justify="space-between"
+              >
+                <Text fontSize="lg" fontWeight="medium">
+                  Usuarios
+                </Text>
+              </Stack>
+            </Box>
+            <Box>
+              <Table>
+                <Thead display={isMobile ? "contents" : ""}>
+                  <Tr>
+                    {colums.map((colum, index) => (
+                      <Th key={index}>
+                        {colum.colum === "Email" && isMobile ? "" : colum.colum}
+                      </Th>
+                    ))}
                   </Tr>
-                ))}
-              </Tbody>
-            </Table>
-          </Box>
-        </Stack>
-      </Box>
-    </Container>
+                </Thead>
+                <Tbody>
+                  {users.map((member: any) => (
+                    <Tr key={member.id}>
+                      <Td>
+                        <HStack spacing="3">
+                          <Box>
+                            <Text fontWeight="medium">{member.name}</Text>
+                          </Box>
+                        </HStack>
+                      </Td>
+                      <Td display={isMobile ? "none" : "block"}>
+                        <Text color="muted">{member.email}</Text>
+                      </Td>
+                      <Td>
+                        <Text color="muted">{member.role}</Text>
+                      </Td>
+                      <Td>
+                        <HStack spacing="1">
+                          <ManualClose dataUser={member} />
+                          <EditUserModal dataUser={member} />
+                        </HStack>
+                      </Td>
+                    </Tr>
+                  ))}
+                </Tbody>
+              </Table>
+            </Box>
+          </Stack>
+        </Box>
+      </Container>
+    </div>
   );
 };
 

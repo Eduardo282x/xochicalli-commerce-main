@@ -12,48 +12,11 @@ import {
 import { Skeleton, SkeletonCircle, SkeletonText } from '@chakra-ui/react'
 import { collection, getDocs } from 'firebase/firestore';
 import { db } from '@/firebase';
-
+import {questionMappings} from './encuestas.data';
 
 const Encuestas = () => {
-
     const [questions, setQuestions] = useState([]);
     const [loading, setLoading] = useState(true);
-
-    const questionMappings = [
-        
-        {
-            question: '1. ¿Te resulto fácil realizar una compra?',
-            key: 'navigationEase',
-            responses: [
-                'Sí',
-                'No',
-            ],
-        },
-        {
-            question: '2. ¿Experimentaste problemas técnicos al realizar una compra, como errores de pago o procesamiento aun habiendo realizado la compra de manera exitosa?',
-            key: 'technicalProblems',
-            responses: ['Sí', 'No'],
-        },
-        {
-            question: '3. ¿Qué tan satisfecho estás con la información proporcionada sobre los productos, como descripciones, imágenes y precios?',
-            key: 'productInformationSatisfaction',
-            responses: [
-                'Muy insatisfecho',
-                'Insatisfecho',
-                'Neutral',
-                'Satisfecho',
-                'Muy satisfecho',                  
-            ],
-        },
-        {
-            question: '4. ¿Tienes alguna sugerencia o comentario adicional sobre la usabilidad de nuestra plataforma que nos ayude a mejorar?',
-            key: 'additionalComments',
-            responses: [''],
-        },
-
-    ];
-
-
 
     useEffect(() => {
         const fetchQuestions = async () => {
@@ -128,14 +91,14 @@ const Encuestas = () => {
                                 <List style={{ display: 'flex', flexDirection: 'column', flexWrap: 'wrap' }}>
                                     {question.key === 'additionalComments' ? (
                                         questions.map((response : any, index) => (
-                                            <ListItem key={index}>
+                                            <ListItem key={index} className="flex items-center justify-between">
                                                 {index + 1} - {response.additionalComments}
                                             </ListItem>
                                         ))
                                     ) : (
                                         question.responses.map((response, index) => (
-                                            <ListItem key={index} style={{ display: 'flex', justifyContent: 'space-between' }}>
-                                                <strong>{response}</strong>
+                                            <ListItem key={index} className="flex items-center justify-between">
+                                                <strong className="w-[20%] h-8">{response}</strong>
                                                 <Progress value={(countResponses(question, response) / questions.length) * 100} size="sm" w="60%" colorScheme="green" />
                                                 <strong>{countResponses(question, response)}</strong>
                                             </ListItem>

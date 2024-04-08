@@ -8,7 +8,6 @@ import { addProduct } from "@/utils";
 import { useToast } from "@chakra-ui/react";
 import { Value } from "./interface";
 import { v4 } from "uuid";
-import './products.css'
 import { useNavigate } from "react-router-dom";
 
 const AddProduct: FC = (): JSX.Element => {
@@ -85,7 +84,7 @@ const AddProduct: FC = (): JSX.Element => {
           ) : step2 === false ? (
             <>
               <FirstStep setValue={setValue} values={value} />
-              <div className="btnDisplay">
+              <div className="flex items-center justify-between w-full">
                 <Button onClick={() => setStep1(false)}>{"Atrás"}</Button>
                 <Button onClick={() => setStep2(true)}>{"Siguiente"}</Button>
               </div>

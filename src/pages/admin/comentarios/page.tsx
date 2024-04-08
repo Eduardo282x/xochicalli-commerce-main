@@ -106,7 +106,7 @@ const Comentarios = () => {
   }, []);
 
   return (
-    <Box style={{ minHeight: "72.7vh" }} id='container comments'>
+    <Box style={{ minHeight: "72.7vh" }} id='container comments' className="w-[60%] mx-auto mt-8">
       <Heading mt={2} textAlign={"center"}>
         Comentarios
       </Heading>

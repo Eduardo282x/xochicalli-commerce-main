@@ -10,6 +10,7 @@ import { UserProvider } from "@/context/auth";
 import { CartProvider } from "@/context/cart";
 import { ErrorBoundaryComponent, ErrorBoundary } from "@/components/errors";
 import { Spinner } from "@/components/loading";
+import './index.css';
 
 import "react-lazy-load-image-component/src/effects/blur.css";
 

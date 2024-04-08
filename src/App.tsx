@@ -71,7 +71,7 @@ export const App: FC = (): JSX.Element => {
   const { pathname } = useLocation();
 
   return (
-    <>
+    <div className=" bg-gray-200">
       <NavbarRenderer />
       <Box id="router">
         <Routes>
@@ -230,6 +230,6 @@ export const App: FC = (): JSX.Element => {
       }
       {pathname !== "/checkout" && <Footer />}
         
-    </>
+    </div>
   );
 };
