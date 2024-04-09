@@ -14,9 +14,9 @@ const LoggedUserRedirect = lazy(
 );
 const WhatsAppButton = lazy(() => import("@/components/WhatsAppButton"));
 const FloatButton = lazy(() => import("@/components/Floatbutton"));
-const Footer = lazy(() => import("@/components/Footer"));
 const LoggedUserNavbar = lazy(() => import("@/components/ui/LoggedUserNavbar"));
 const ModNavbar = lazy(() => import("@/components/ui/ModNavbar"));
+const Footer = lazy(() => import("@/components/Footer"));
 
 // Public routes
 const Home = lazy(() => import("@/pages/home/Home"));
@@ -72,12 +72,9 @@ export const App: FC = (): JSX.Element => {
 
     return (
         <>
-            
-            {/* <Box id="router"> */}
+            <NavbarRenderer />
+            <Box id="router">
                 <Routes>
-                    <Route element={<NavbarRenderer />}>
-
-                   
                     <Route index element={<Home />} />
                     <Route path="/login" element={<LoggedUserRedirect />} />
                     <Route path="/signup" element={<LoggedUserRedirect />} />
@@ -224,10 +221,14 @@ export const App: FC = (): JSX.Element => {
                     </Route>
 
                     <Route path="*" element={<NotFound />} />
-                  </Route>
                 </Routes>
-            {/* </Box> */}
-
+            </Box>
+            {pathname !== "/checkout" && <Box>
+                <WhatsAppButton />
+                <FloatButton />
+            </Box>
+            }
+            {pathname !== "/checkout" && <Footer />}
 
         </>
     );

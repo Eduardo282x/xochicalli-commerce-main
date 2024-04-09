@@ -24,6 +24,7 @@ export const linksData: NavbarItems[] = [
         text: "Comentarios",
         path: "/admin/comentarios",
         icon: 'forum'
+        // icon: 'comment'
     },
     {
         id: 5,

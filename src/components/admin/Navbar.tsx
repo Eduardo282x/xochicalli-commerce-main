@@ -8,17 +8,22 @@ import {
   IconButton,
   Select,
 } from "@chakra-ui/react";
-import { NavLink, useNavigate } from "react-router-dom";
+import { NavLink, Outlet, useNavigate, useLocation } from "react-router-dom";
 import { FiLogOut } from "react-icons/fi";
-
+import { Box } from "@chakra-ui/react";
 import { ActiveUser, NavbarItems } from "@/interfaces";
 import { logOut } from "@/utils";
 import { selectProductsData, linksData } from "./navbar.data";
 
 const Sidebar = lazy(() => import("./Sidebar"));
 
+const WhatsAppButton = lazy(() => import("@/components/WhatsAppButton"));
+const FloatButton = lazy(() => import("@/components/Floatbutton"));
+const Footer = lazy(() => import("@/components/Footer"));
+
 const Navbar: FC<ActiveUser> = ({ isUser }): JSX.Element => {
   const [isLargerThan800] = useMediaQuery("(min-width: 800px)");
+  const { pathname } = useLocation();
 
   const navigate = useNavigate();
 
@@ -40,9 +45,9 @@ const Navbar: FC<ActiveUser> = ({ isUser }): JSX.Element => {
   };
 
   return (
-    <div className="relative">
-      <div className="fixed flex flex-col justify-between left-0 top-0 h-[calc(100%-64px)] mt-[64px] bg-white p-4 z-50 sidebar-menu transition-transform">
-        <nav className="flex flex-col gap-1 min-w-[240px] p-2 font-sans text-base font-normal text-gray-700">
+    <div className="bg-gray-300 h-screen overflow-hidden">
+      <div className="fixed flex flex-col justify-between left-0 top-0 h-[calc(100vh-64px)] mt-[64px] bg-white p-4 z-50 sidebar-menu transition-transform">
+        <nav className="flex flex-col gap-1 min-w-[15rem] p-2 font-sans text-base font-normal text-gray-700">
           {linksData.map(opt => (
             <div key={opt.id} onClick={() => navigate(opt.path)} role="button" className="flex items-center w-full p-3 rounded-lg text-start leading-tight transition-all hover:bg-[#48bb78] focus:bg-[#48bb78] active:bg-[#48bb78] hover:text-white focus:text-white active:text-white outline-none">
               <span className="material-symbols-outlined">{opt.icon}</span>
@@ -123,6 +128,17 @@ const Navbar: FC<ActiveUser> = ({ isUser }): JSX.Element => {
           <Sidebar isUser={isUser} />
         )}
       </HStack>
+
+      <div className="h-full overflow-auto w-[calc(100%-8rem)] ml-[12.5rem] flex flex-col items-center justify-start">
+        <Outlet/>
+
+        {pathname !== "/checkout" && <Box className="z-50">
+                  <WhatsAppButton />
+                  <FloatButton />
+              </Box>
+              }
+        {pathname !== "/checkout" && <Footer />}
+      </div>
     </div>
   );
 };

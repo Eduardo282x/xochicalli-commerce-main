@@ -21,40 +21,30 @@ import { IoArrowDown } from "react-icons/io5";
 import ManualClose from "./deleteModal";
 import EditUserModal from "./editUserModal";
 import { User } from "firebase/auth";
+import { Columns, columns } from "./user.data";
 
 const Users = (props: TableProps) => {
   const isMobile = useBreakpointValue({ base: true, lg: false });
+
+  const [columnsUser, setColumnsUser] = useState<Columns[]>(columns);
   const [users, setUsers] = useState<User[]>([]);
   useEffect(() => {
-    const getFirebaseUser = (arrayUsers: any) => {
+    const getFirebaseUser = (arrayUsers: User[] | any) => {
       console.log("escuchar continuamente", arrayUsers);
       setUsers(arrayUsers);
     };
     getUserss(getFirebaseUser);
+    checkColumnsUser();
   }, []);
-  const colums = [
-    {
-      colum: (
-        <HStack spacing="3">
-          <Checkbox />
-          <HStack spacing="1">
-            <Text>Nombre</Text>
-            <Icon as={IoArrowDown} color="muted" boxSize="4" />
-          </HStack>
-        </HStack>
-      ),
-    },
-    {
-      colum: "Email",
-    },
-    {
-      colum: "role",
-    },
-  ];
-  return (
 
-    <div className="bg-white w-[50%] mx-auto my-5 rounded-lg">
-      <Container py={{ base: "4", md: "8" }} px={{ base: "0", md: 8 }}>
+  const checkColumnsUser = () => {
+    const columnCopy: Columns[] = isMobile ? columns.filter(col => col.column != 'Email') : columns;
+    setColumnsUser(columnCopy)
+  }
+
+  return (
+    <div className="bg-white w-[70%]  my-5 flex items-center justify-center rounded-lg">
+      <Container py={{ base: "4", md: "8" }} px={{ base: "0", md: 0 }} className="flex items-center justify-center">
         <Box
           bg="bg-surface"
           boxShadow={{ base: "none", md: "sm" }}
@@ -71,17 +61,19 @@ const Users = (props: TableProps) => {
                 </Text>
               </Stack>
             </Box>
-            <Box>
+
+            <div >
               <Table>
                 <Thead display={isMobile ? "contents" : ""}>
                   <Tr>
-                    {colums.map((colum, index) => (
+                    {columnsUser.map((column: Columns, index) => (
                       <Th key={index}>
-                        {colum.colum === "Email" && isMobile ? "" : colum.colum}
+                        {column.column}
                       </Th>
                     ))}
                   </Tr>
                 </Thead>
+
                 <Tbody>
                   {users.map((member: any) => (
                     <Tr key={member.id}>
@@ -92,7 +84,7 @@ const Users = (props: TableProps) => {
                           </Box>
                         </HStack>
                       </Td>
-                      <Td display={isMobile ? "none" : "block"}>
+                      <Td display={isMobile ? "none" : ""}>
                         <Text color="muted">{member.email}</Text>
                       </Td>
                       <Td>
@@ -108,7 +100,7 @@ const Users = (props: TableProps) => {
                   ))}
                 </Tbody>
               </Table>
-            </Box>
+            </div>
           </Stack>
         </Box>
       </Container>
