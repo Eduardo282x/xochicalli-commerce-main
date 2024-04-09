@@ -130,7 +130,9 @@ const Navbar: FC<ActiveUser> = ({ isUser }): JSX.Element => {
       </HStack>
 
       <div className="h-full overflow-auto w-[calc(100%-8rem)] ml-[12.5rem] flex flex-col items-center justify-start">
-        <Outlet/>
+        <div className="h-auto w-full flex items-center justify-center">
+          <Outlet/>
+        </div>
 
         {pathname !== "/checkout" && <Box className="z-50">
                   <WhatsAppButton />

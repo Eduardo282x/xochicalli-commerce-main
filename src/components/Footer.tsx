@@ -24,7 +24,6 @@ import { useNavigate } from "react-router-dom";
 
 
 const Footer: FC = (): JSX.Element => {
-
   const navigate = useNavigate();
 
   return (
