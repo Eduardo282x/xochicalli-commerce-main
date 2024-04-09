@@ -5,38 +5,44 @@ export const linksData: NavbarItems[] = [
         id: 1,
         text: "Usuarios",
         path: "/admin/user",
-        icon: 'person'
+        icon: 'person',
+        active: false
     },
     {
         id: 2,
         text: "Ventas",
         path: "/admin/dashboard",
-        icon: 'point_of_sale'
+        icon: 'point_of_sale',
+        active: false
     },
     {
         id: 3,
         text: "Backup",
         path: "/admin/backups",
-        icon: 'backup'
+        icon: 'backup',
+        active: false
     },
     {
         id: 4,
         text: "Comentarios",
         path: "/admin/comentarios",
-        icon: 'forum'
+        icon: 'forum',
+        active: false
         // icon: 'comment'
     },
     {
         id: 5,
         text: "Encuestas",
         path: "/admin/encuestas",
-        icon: 'contract_edit'
+        icon: 'contract_edit',
+        active: false
     },
     {
-        id: 5,
+        id: 6,
         text: "Blog",
         path: "/admin/blog-create",
-        icon: 'text_snippet'
+        icon: 'text_snippet',
+        active: false
     },
 ];
 

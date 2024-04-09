@@ -29,6 +29,7 @@ export interface NavbarItems {
   text: string;
   path: string;
   icon: string;
+  active? : boolean;
 }
 
 export interface PasswordResetQuestion {
