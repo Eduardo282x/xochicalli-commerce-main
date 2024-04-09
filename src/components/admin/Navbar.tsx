@@ -60,12 +60,15 @@ const Navbar: FC<ActiveUser> = ({ isUser }): JSX.Element => {
   };
 
   useEffect(() => {
+    linksData.map(opt => {
+      opt.active = false
+    });
     const findActive = linksData.find(opt => opt.path === pathname);
     if(findActive){
       findActive.active = true;
       setListMenu(listMenu);
     }
-  },[])
+  },[pathname])
 
   return (
     <div className="bg-gray-300 h-screen overflow-hidden">
