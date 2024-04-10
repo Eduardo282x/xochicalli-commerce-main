@@ -26,8 +26,8 @@ const Navbar: FC<ActiveUser> = ({ isUser }): JSX.Element => {
   const { pathname } = useLocation();
   const [listMenu, setListMenu] = useState<NavbarItems[]>(linksData);
 
-  const normalClass = 'flex items-center w-full p-3 rounded-lg text-start leading-tight transition-all cursor-pointer hover:bg-[#48bb78] focus:bg-[#48bb78] active:bg-[#48bb78] hover:text-white focus:text-white active:text-white outline-none';
-  const activeClass = 'flex items-center w-full p-3 rounded-lg text-start leading-tight transition-all cursor-pointer bg-[#48bb78] bg-[#48bb78] bg-[#48bb78] text-white text-white text-white outline-none';
+  const normalClass = 'hover:bg-[#48bb78] hover:text-white';
+  const activeClass = 'bg-[#48bb78] text-white';
 
   const navigate = useNavigate();
 
@@ -75,7 +75,7 @@ const Navbar: FC<ActiveUser> = ({ isUser }): JSX.Element => {
       <div className="fixed flex flex-col justify-between left-0 top-0 h-[calc(100vh-64px)] mt-[64px] bg-white p-4 z-50 sidebar-menu transition-transform">
         <nav className="flex flex-col gap-1 min-w-[15rem] p-2 font-sans text-base font-normal text-gray-700">
           {listMenu.map(opt => (
-            <div key={opt.id} onClick={() => {navigate(opt.path); handleActive(opt)}} className={opt.active ? activeClass : normalClass}>
+            <div key={opt.id} onClick={() => {navigate(opt.path); handleActive(opt)}} className={`flex items-center w-full p-3 rounded-lg text-start leading-tight transition-all cursor-pointer ${opt.active ? activeClass : normalClass} outline-none`}>
               <span className="material-symbols-outlined">{opt.icon}</span>
               <p className="mx-2" >{opt.text}</p>
             </div>
