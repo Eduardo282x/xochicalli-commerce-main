@@ -44,6 +44,20 @@ export const linksData: NavbarItems[] = [
         icon: 'text_snippet',
         active: false
     },
+    {
+        id: 7,
+        text: "Productos",
+        path: "/admin/products",
+        icon: 'potted_plant',
+        active: false
+    },
+    {
+        id: 8,
+        text: "Agregar producto",
+        path: "/admin/add",
+        icon: 'add',
+        active: false
+    }
 ];
 
 export const selectProductsData: NavbarItems[] = [

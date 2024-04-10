@@ -1,7 +1,7 @@
 import { FC, useRef } from 'react'
 
 import { Button, Divider, Drawer, DrawerBody, DrawerCloseButton, DrawerContent, DrawerFooter, DrawerHeader, DrawerOverlay, Icon, Text, useDisclosure, } from '@chakra-ui/react'
-import { useNavigate } from 'react-router-dom'
+import { Outlet, useNavigate } from 'react-router-dom'
 import { FaAlignRight } from 'react-icons/fa'
 
 import { SignOutModal } from './'
@@ -61,6 +61,7 @@ const Sidebar: FC<ActiveUser> = ({ isUser }): JSX.Element => {
                     }
                 </DrawerContent>
             </Drawer>
+            <Outlet/>
         </>
     )
 }

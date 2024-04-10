@@ -21,7 +21,7 @@ import {
   FiMessageSquare,
   FiMail,
 } from "react-icons/fi";
-import { Link as RouterLink, useNavigate } from "react-router-dom";
+import { Outlet, Link as RouterLink, useNavigate } from "react-router-dom";
 
 const links = [
   {
@@ -228,6 +228,7 @@ export const Navbar: FC = (): JSX.Element => {
           </HStack>
         </Flex>
       )}
+      <Outlet/>
     </React.Fragment>
   );
 };

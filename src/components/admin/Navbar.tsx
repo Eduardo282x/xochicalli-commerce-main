@@ -1,28 +1,28 @@
 import { FC, lazy, useEffect, useState } from "react";
 
-import {
-  Text,
-  HStack,
-  useMediaQuery,
-  Heading,
-  IconButton,
-  Select,
-} from "@chakra-ui/react";
-import { NavLink, Outlet, useNavigate, useLocation } from "react-router-dom";
-import { FiLogOut } from "react-icons/fi";
+// import {
+//   Text,
+//   HStack,
+//   useMediaQuery,
+//   Heading,
+//   IconButton,
+//   Select,
+// } from "@chakra-ui/react";
+import { Outlet, useNavigate, useLocation } from "react-router-dom";
+// import { FiLogOut } from "react-icons/fi";
 import { Box } from "@chakra-ui/react";
 import { ActiveUser, NavbarItems } from "@/interfaces";
 import { logOut } from "@/utils";
-import { selectProductsData, linksData } from "./navbar.data";
+import { linksData } from "./navbar.data";
 
-const Sidebar = lazy(() => import("./Sidebar"));
+//  const Sidebar = lazy(() => import("./Sidebar"));
 
 const WhatsAppButton = lazy(() => import("@/components/WhatsAppButton"));
 const FloatButton = lazy(() => import("@/components/Floatbutton"));
 const Footer = lazy(() => import("@/components/Footer"));
 
 const Navbar: FC<ActiveUser> = ({ isUser }): JSX.Element => {
-  const [isLargerThan800] = useMediaQuery("(min-width: 800px)");
+  // const [isLargerThan800] = useMediaQuery("(min-width: 800px)");
   const { pathname } = useLocation();
   const [listMenu, setListMenu] = useState<NavbarItems[]>(linksData);
 
@@ -38,7 +38,7 @@ const Navbar: FC<ActiveUser> = ({ isUser }): JSX.Element => {
     const findActive = linksData.find(opt => opt.id === optionMenu.id);
     if(findActive){
       findActive.active = true;
-      setListMenu(listMenu);
+      setListMenu(linksData);
     }
   }
 
@@ -50,14 +50,14 @@ const Navbar: FC<ActiveUser> = ({ isUser }): JSX.Element => {
       .catch((err) => console.log(err));
   };
 
-  const handleSelectChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
-    const selectedProductId = parseInt(e.target.value);
-    const selectedProduct = selectProductsData.find((product) => product.id === selectedProductId);
+  // const handleSelectChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
+  //   const selectedProductId = parseInt(e.target.value);
+  //   const selectedProduct = selectProductsData.find((product) => product.id === selectedProductId);
 
-    if (selectedProduct) {
-      navigate(selectedProduct.path);
-    }
-  };
+  //   if (selectedProduct) {
+  //     navigate(selectedProduct.path);
+  //   }
+  // };
 
   useEffect(() => {
     linksData.map(opt => {
@@ -66,14 +66,18 @@ const Navbar: FC<ActiveUser> = ({ isUser }): JSX.Element => {
     const findActive = linksData.find(opt => opt.path === pathname);
     if(findActive){
       findActive.active = true;
-      setListMenu(listMenu);
+      setListMenu(linksData);
     }
   },[pathname])
 
   return (
     <div className="bg-gray-300 h-screen overflow-hidden">
-      <div className="fixed flex flex-col justify-between left-0 top-0 h-[calc(100vh-64px)] mt-[64px] bg-white p-4 z-50 sidebar-menu transition-transform">
+      <div className="fixed flex flex-col md:w-auto w-0 overflow-hidden justify-between left-0 top-0 h-full bg-white md:p-4 z-50 transition-transform">
         <nav className="flex flex-col gap-1 min-w-[15rem] p-2 font-sans text-base font-normal text-gray-700">
+          <div className={`flex items-center w-full p-3 rounded-lg text-start leading-tight transition-all cursor-pointer bg-green-700 font-semibold text-base text-white outline-none`}>
+            <p className="mx-2" >Panel de administrador</p>
+          </div>
+
           {listMenu.map(opt => (
             <div key={opt.id} onClick={() => {navigate(opt.path); handleActive(opt)}} className={`flex items-center w-full p-3 rounded-lg text-start leading-tight transition-all cursor-pointer ${opt.active ? activeClass : normalClass} outline-none`}>
               <span className="material-symbols-outlined">{opt.icon}</span>
@@ -82,13 +86,13 @@ const Navbar: FC<ActiveUser> = ({ isUser }): JSX.Element => {
           ))}
         </nav>
 
-        <div onClick={onLogout} className="flex items-center justify-start gap-2 w-full rounded-2xl bg-red-600 text-white p-4 cursor-pointer">
+        <div onClick={onLogout} className="flex items-center justify-start gap-2 w-full rounded-2xl bg-red-600 hover:bg-red-700 hover:shadow-lg transition-all text-white p-4 cursor-pointer">
           <span className="material-symbols-outlined">logout</span>
           <p>Cerrar sesión</p>
         </div>
       </div>
 
-      <HStack className="w-full justify-between items-center bg-[#48bb78] h-[64px] "
+      {/* <HStack className="w-full justify-between items-center bg-[#48bb78] h-[64px] "
         px={[4, 8, 12]}
       >
         <Heading color='white' fontSize={["xl", "2xl"]} className="cursor-pointer">
@@ -153,9 +157,9 @@ const Navbar: FC<ActiveUser> = ({ isUser }): JSX.Element => {
         ) : (
           <Sidebar isUser={isUser} />
         )}
-      </HStack>
+      </HStack> */}
 
-      <div className="h-full overflow-auto w-[calc(100%-8rem)] ml-[12.5rem] flex flex-col items-center justify-start">
+      <div className="h-full overflow-auto w-full ml-0 md:w-[calc(100%-8rem)] md:ml-[12.5rem] flex flex-col items-center justify-start">
         <div className="h-auto w-full flex items-center justify-center">
           <Outlet/>
         </div>

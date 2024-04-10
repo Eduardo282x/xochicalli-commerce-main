@@ -1,20 +1,20 @@
 import { FC, lazy, useContext } from "react";
 
-import { Routes, Route, Outlet, useLocation, Navigate } from "react-router-dom";
+import { Routes, Route, Outlet, Navigate } from "react-router-dom";
 
 import { CartContext, UserContext } from "@/context";
 import { PrivateRoute } from "@/components/auth";
 import { Navbar } from "@/components";
-import { Box } from "@chakra-ui/react";
+// import { Box } from "@chakra-ui/react";
 
 // Lazy load components
 const AdminNavbar = lazy(() => import("@/components/admin/Navbar"));
 const LoggedUserRedirect = lazy(
     () => import("@/components/auth/LoggedUserRedirect")
 );
-const WhatsAppButton = lazy(() => import("@/components/WhatsAppButton"));
-const FloatButton = lazy(() => import("@/components/Floatbutton"));
-const Footer = lazy(() => import("@/components/Footer"));
+// const WhatsAppButton = lazy(() => import("@/components/WhatsAppButton"));
+// const FloatButton = lazy(() => import("@/components/Floatbutton"));
+// const Footer = lazy(() => import("@/components/Footer"));
 const LoggedUserNavbar = lazy(() => import("@/components/ui/LoggedUserNavbar"));
 const ModNavbar = lazy(() => import("@/components/ui/ModNavbar"));
 
@@ -55,7 +55,7 @@ const BlogAdminDescription = lazy(() => import("@/pages/admin/blog/DescriptionAd
 
 const NavbarRenderer: FC = (): JSX.Element => {
     const { user, userRole } = useContext(UserContext);
-
+    
     if (user) {
         if (userRole === "admin") return <AdminNavbar isUser={user} />;
         if (userRole === "user") return <LoggedUserNavbar />;
@@ -68,7 +68,7 @@ const NavbarRenderer: FC = (): JSX.Element => {
 export const App: FC = (): JSX.Element => {
     const { cart } = useContext(CartContext);
 
-    const { pathname } = useLocation();
+    // const { pathname } = useLocation();
 
     return (
         <>
@@ -76,8 +76,6 @@ export const App: FC = (): JSX.Element => {
             {/* <Box id="router"> */}
                 <Routes>
                     <Route element={<NavbarRenderer />}>
-
-                   
                     <Route index element={<Home />} />
                     <Route path="/login" element={<LoggedUserRedirect />} />
                     <Route path="/signup" element={<LoggedUserRedirect />} />

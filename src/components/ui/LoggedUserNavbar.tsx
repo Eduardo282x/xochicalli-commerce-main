@@ -1,4 +1,4 @@
-import { FC, useContext } from "react";
+import { FC, useContext, useEffect } from "react";
 
 import {
     Accordion, AccordionButton, AccordionIcon, Icon, AccordionItem, AccordionPanel,
@@ -7,7 +7,7 @@ import {
     Text, useDisclosure, useMediaQuery, VStack, PopoverHeader, Badge
 } from "@chakra-ui/react";
 import { FiBox, FiMenu, FiShoppingCart, FiUser, FiMessageSquare, FiMail, FiLogOut } from "react-icons/fi";
-import { Link as RouterLink, useNavigate } from "react-router-dom";
+import { Outlet, Link as RouterLink, useNavigate } from "react-router-dom";
 
 import { UserContext, CartContext } from "@/context";
 import { logOut } from "@/utils";
@@ -34,6 +34,7 @@ const links = [
 ]
 
 const LoggedUserNavbar: FC = (): JSX.Element => {
+
     const isInLogin = window.location.pathname
 
     const { userInformation } = useContext(UserContext)
@@ -296,6 +297,7 @@ const LoggedUserNavbar: FC = (): JSX.Element => {
                             </VStack>
                         </Box>
                     </HStack>
+                    <Outlet/>
                 </Flex>
             }
         </>
