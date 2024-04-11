@@ -52,7 +52,7 @@ const Comentarios = lazy(() => import("@/pages/admin/comentarios/page"));
 const BlogAdminCreate = lazy(() => import("@/pages/admin/blog/CreateSection"));
 const BlogAdminShow = lazy(() => import("@/pages/admin/blog/ShowSecttionAdmin"));
 const BlogAdminUpdate = lazy(() => import("@/pages/admin/blog/UpdateSection"));
-const BlogAdminDescription = lazy(() => import("@/pages/admin/blog/DescriptionAdmin"));
+// const BlogAdminDescription = lazy(() => import("@/pages/admin/blog/DescriptionAdmin"));
 
 const NavbarRenderer: FC = (): JSX.Element => {
     const { user, userRole } = useContext(UserContext);
@@ -172,10 +172,10 @@ export const App: FC = (): JSX.Element => {
                             }
                         />
                         <Route
-                            path="blog-description"
+                            path="blog-description-new"
                             element={
                                 <PrivateRoute allowedRoles="admin">
-                                    <BlogAdminDescription />
+                                    <PublicBlogDescroptionNew />
                                 </PrivateRoute>
                             }
                         />
