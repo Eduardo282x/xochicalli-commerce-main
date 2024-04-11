@@ -17,10 +17,11 @@ import { useNavigate } from 'react-router-dom';
 import { useLocation } from 'react-router-dom';
 
 const DescriptionUser = () => {
-
+  
   const { state } = useLocation();
   const navigate = useNavigate();
   const { post } = state;
+  console.log(state);
 
   if (!post) {
     return (

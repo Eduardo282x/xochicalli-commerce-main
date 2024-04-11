@@ -33,6 +33,7 @@ const Faqs = lazy(() => import("@/pages/faqs/index"));
 const Questions = lazy(() => import("@/pages/questions/index"));
 const PublicBlog = lazy(() => import("@/pages/admin/blog/ShowSectionUser"));
 const PublicBlogDescroption = lazy(() => import("@/pages/admin/blog/DescriptionUser"));
+const PublicBlogDescroptionNew = lazy(() => import("@/pages/admin/blog/newblog/descriptionBlog"));
 
 // Normal user routes
 const UserProfile = lazy(() => import("@/pages/user/UserProfile"));
@@ -87,6 +88,7 @@ export const App: FC = (): JSX.Element => {
                     <Route path="/questions" element={<Questions />} />
                     <Route path="/blog" element={<PublicBlog />} />
                     <Route path="/blog-description" element={<PublicBlogDescroption />} />
+                    <Route path="/blog-description-new" element={<PublicBlogDescroptionNew />} />
                     <Route path="/contact" element={<Contact />} />
                     <Route path="/privacy-policy" element={<PrivacyPolicy />} />
                     <Route path="/checkout" element={cart.length < 1 ? <Navigate to="/cart" /> : <Checkout />} />
