@@ -18,6 +18,7 @@ import "slick-carousel/slick/slick-theme.css";
 import { Helmet } from "react-helmet-async";
 import { useFilter, useProducts } from "@/hooks";
 import { Spinner as LazySpinner } from "@/components/loading";
+import { Carousel } from "@/components/carousel/Carousel";
 
 const ProductsHome = lazy(() => import("@/components/products/ProductsHome"));
 const ProductsCardCategory = lazy(() => import("@/components/products/ProductsCardCategory"));
@@ -52,6 +53,12 @@ const Home: FC = (): JSX.Element => {
   const {
     sortedProducts,
   } = useFilter();
+
+  console.log(sortedProducts);
+
+  const imagesCarousel = sortedProducts.map(img => {return img.image});
+  console.log(imagesCarousel);
+  
 
   const imageHeight2 = useBreakpointValue({ sm: 256, md: 512 }) || 256;
   const textW = useBreakpointValue({ sm: 8, md: 48 }) || 8;
@@ -114,8 +121,11 @@ const Home: FC = (): JSX.Element => {
             {loading ? (
               <Spinner size='xl' mt={4} />
             ) : products.length !== 0 ? (
-              <VStack gap={6}>
-                <Grid
+              <VStack gap={6} className="w-[80%] overflow-hidden" >
+
+                <Carousel items={sortedProducts}></Carousel>
+
+                {/* <Grid
                   height='100%'
                   templateColumns={[
                     "repeat(1, 1fr)",
@@ -160,7 +170,7 @@ const Home: FC = (): JSX.Element => {
                         );
                       }
                     )}
-                </Grid>
+                </Grid> */}
               </VStack>
             ) : (
               <Text fontWeight='medium'>No hay productos 😓</Text>

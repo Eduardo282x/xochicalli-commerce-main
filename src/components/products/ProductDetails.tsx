@@ -1,6 +1,7 @@
 import React, { FC, useEffect } from 'react'
 import { ProductsViewDetails } from './producDetails.interface';
 import './producs-details.css';
+
 export const ProductDetails: FC<ProductsViewDetails> = ({products}) => {
 
     useEffect(() => {

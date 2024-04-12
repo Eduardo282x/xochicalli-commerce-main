@@ -4,7 +4,7 @@ import {
 
 import {
     Box,
-     Text,
+    Text,
 } from '@chakra-ui/react'
 import { useNavigate } from 'react-router-dom';
 import { usePrice } from '@/hooks';
@@ -20,14 +20,14 @@ const ProductsHome: FC<Product> = (product): JSX.Element => {
 
     function truncateText(text: any, maxLength: any) {
         if (text.length > maxLength) {
-          return text.slice(0, maxLength);
+            return text.slice(0, maxLength);
         }
         return text;
-      }
- 
+    }
+
 
     return (
-        <Box h='450px' w='300px'  onClick={toProduct} border='2px solid #e2e8f0' borderRadius='md' overflow='hidden'>
+        <Box h='450px' w='300px' onClick={toProduct} border='2px solid #e2e8f0' borderRadius='md' overflow='hidden' className=' cursor-pointer'>
             <Box
                 sx={{
                     display: 'flex',
@@ -40,9 +40,7 @@ const ProductsHome: FC<Product> = (product): JSX.Element => {
                     justifyContent: 'flex-end',
                     alignItems: 'flex-end',
                 }}
-                
-            > 
-           
+            >
             </Box>
             <Box>
                 <Box px={1}>

@@ -1,0 +1,28 @@
+.carousel-container {
+    overflow-x: hidden;
+    white-space: nowrap;
+    /* Altura del contenedor */
+}
+
+.carousel-inner {
+    display: flex;
+    animation: scroll 60s linear infinite;
+    /* Ajusta la duración para controlar la velocidad */
+}
+
+.carousel-image {
+    max-width: 100%;
+    display: inline-block;
+    white-space: normal;
+}
+
+@keyframes scroll {
+    0% {
+        transform: translateX(0);
+    }
+
+    100% {
+        transform: translateX(calc(-100% * (1 / 2)));
+        /* Asumiendo que hay dos conjuntos de imágenes */
+    }
+}

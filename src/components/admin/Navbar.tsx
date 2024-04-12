@@ -32,8 +32,9 @@ const Navbar: FC<ActiveUser> = ({ isUser }): JSX.Element => {
   const navigate = useNavigate();
 
   const handleActive = (optionMenu: NavbarItems) => {
-    linksData.map(opt => {
-      opt.active = false
+    linksData.map((opt: NavbarItems) => {
+      opt.active = false;
+      return opt;
     });
     const findActive = linksData.find(opt => opt.id === optionMenu.id);
     if(findActive){
@@ -60,8 +61,9 @@ const Navbar: FC<ActiveUser> = ({ isUser }): JSX.Element => {
   // };
 
   useEffect(() => {
-    linksData.map(opt => {
-      opt.active = false
+    linksData.map((opt: NavbarItems) => {
+      opt.active = false;
+      return opt;
     });
     const findActive = linksData.find(opt => opt.path === pathname);
     if(findActive){
@@ -78,7 +80,7 @@ const Navbar: FC<ActiveUser> = ({ isUser }): JSX.Element => {
             <p className="mx-2" >Panel de administrador</p>
           </div>
 
-          {listMenu.map(opt => (
+          {listMenu.map((opt: NavbarItems) => (
             <div key={opt.id} onClick={() => {navigate(opt.path); handleActive(opt)}} className={`flex items-center w-full p-3 rounded-lg text-start leading-tight transition-all cursor-pointer ${opt.active ? activeClass : normalClass} outline-none`}>
               <span className="material-symbols-outlined">{opt.icon}</span>
               <p className="mx-2" >{opt.text}</p>
