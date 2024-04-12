@@ -121,7 +121,7 @@ const Home: FC = (): JSX.Element => {
             {loading ? (
               <Spinner size='xl' mt={4} />
             ) : products.length !== 0 ? (
-              <VStack gap={6} className="w-[80%] overflow-hidden" >
+              <VStack gap={6} className="w-[60%] overflow-hidden" >
 
                 <Carousel items={sortedProducts}></Carousel>
 
