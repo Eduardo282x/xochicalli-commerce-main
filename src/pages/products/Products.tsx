@@ -1,4 +1,4 @@
-import { FC, lazy, Suspense } from "react";
+import { FC, lazy, Suspense, useState } from "react";
 
 import {
   Center,
@@ -19,17 +19,35 @@ import {
   Select,
   Flex,
   Checkbox,
+  Button,
+  useStatStyles,
 } from "@chakra-ui/react";
 import { Link } from "react-router-dom";
 import { FiSearch, FiX } from "react-icons/fi";
 import { Helmet } from "react-helmet-async";
 import { useFilter, useProducts } from "@/hooks";
 import { Spinner as LazySpinner } from "@/components/loading";
+import { buttonsSelects, Btns } from "./btn.data";
 
 const ProductCard = lazy(() => import("@/components/products/ProductCard"));
 
 const Products: FC = (): JSX.Element => {
   const { loading, products } = useProducts();
+  const [btnFilter, setBtnFilter] = useState<Btns[]>(buttonsSelects);
+
+  const selectBtn = (btn: any) => {
+    const copyBtn: Btns[] = btnFilter.map((btns: Btns) => { 
+      btns.active = false;
+      return btns
+    });
+    const findBtn: Btns | any = copyBtn.find(opt => opt.value === btn.value);
+    
+    if(findBtn){
+      findBtn.active = true
+    }
+    setBtnFilter(copyBtn);
+  }
+
   console.log('%cloading::>', 'color:red', loading)
   const {
     searchInput,
@@ -80,24 +98,18 @@ const Products: FC = (): JSX.Element => {
                   children={<FiX />}
                 />
               </InputGroup>
-              <CheckboxGroup
-                colorScheme='green'
-                onChange={handleCategoryChange}
-              >
-                <Flex
+
+              <Flex
                   pl={[8, 8, 0]}
                   direction={["column", "column", "row"]}
-                  gap={4}
+                  gap={8}
                   justifyContent={["flex-start", "flex-start", "center"]}
-                  w='100%'
                 >
-                  <Checkbox value='Macetas'>Macetas</Checkbox>
-                  <Checkbox value='Abonos'>Abonos</Checkbox>
-                  <Checkbox value='Plantas'>Plantas</Checkbox>
-                  <Checkbox value='Fertilizantes'>Fertilizantes</Checkbox>
-                  <Checkbox value='Herramientas'>Herramientas</Checkbox>
-                </Flex>
-              </CheckboxGroup>
+                  {btnFilter.map((btn) => (
+                    <Button colorScheme={btn.active ? 'green' : 'gray'} onClick={() => selectBtn(btn)}>{btn.label}</Button>
+                  ))}
+              </Flex>
+
               <Select
                 bgColor='gray.200'
                 placeholder='Ordenar por'
