@@ -35,6 +35,7 @@ const Products: FC = (): JSX.Element => {
   const { loading, products } = useProducts();
   const [btnFilter, setBtnFilter] = useState<Btns[]>(buttonsSelects);
 
+  
   const selectBtn = (btn: any) => {
     const copyBtn: Btns[] = btnFilter.map((btns: Btns) => { 
       btns.active = false;
@@ -57,6 +58,9 @@ const Products: FC = (): JSX.Element => {
     onSearchInputChange,
     handleSortChange,
   } = useFilter();
+
+  console.log('pRODUCTOS',sortedProducts);
+
   console.log('index-products', products)
   return (
     <VStack minH='calc(100vh - 64px)' bgColor='gray.100' p={4}>
@@ -99,16 +103,16 @@ const Products: FC = (): JSX.Element => {
                 />
               </InputGroup>
 
-              <Flex
+              {/* <Flex
                   pl={[8, 8, 0]}
                   direction={["column", "column", "row"]}
                   gap={8}
                   justifyContent={["flex-start", "flex-start", "center"]}
                 >
                   {btnFilter.map((btn) => (
-                    <Button colorScheme={btn.active ? 'green' : 'gray'} onClick={() => selectBtn(btn)}>{btn.label}</Button>
+                    <Button colorScheme={btn.active ? 'green' : 'gray'} onClick={() => {selectBtn(btn); handleCategoryChange(btn.value)}}>{btn.label}</Button>
                   ))}
-              </Flex>
+              </Flex> */}
 
               <Select
                 bgColor='gray.200'

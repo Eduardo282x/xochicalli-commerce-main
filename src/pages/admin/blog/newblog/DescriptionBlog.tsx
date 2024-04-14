@@ -1,6 +1,6 @@
 import { useLocation, useNavigate } from "react-router-dom";
 import { Blog, optionBlog, BlogKeys } from "./blogs.data";
-import { Box, Breadcrumb, BreadcrumbItem, BreadcrumbLink, IconButton } from "@chakra-ui/react";
+import { Box, Breadcrumb, BreadcrumbItem, BreadcrumbLink, IconButton, Image } from "@chakra-ui/react";
 import ReactPlayer from 'react-player';
 import { ArrowBackIcon } from '@chakra-ui/icons';
 import './descriptionblog.css';
@@ -68,7 +68,15 @@ const DescriptionBlog = () => {
 
             <div className="flex items-center justify-around flex-wrap w-full gap-5 my-8">
                 {post.imageOne && post.imageOne.map(img => (
-                    <p className="w-[10rem] h-[10rem] border-2 border-solid border-black">Imagen: {img}</p>
+                    <Image
+                    key={img}
+                    src={img}
+                    alt="Blog Image"
+                    objectFit="cover"
+                    loading="lazy"
+                    width={["15rem", "15rem"]}
+                    borderRadius="lg"
+                    />
                 ))}
             </div>
 
@@ -83,7 +91,15 @@ const DescriptionBlog = () => {
 
             <div className="flex items-center justify-around flex-wrap w-full gap-5 my-8">
                 {post.imageTwo && post.imageTwo.map(img => (
-                    <p className="w-[10rem] h-[10rem] border-2 border-solid border-black">Imagen: {img}</p>
+                    <Image
+                        key={img}
+                        src={img}
+                        alt="Blog Image"
+                        objectFit="cover"
+                        loading="lazy"
+                        width={["15rem", "15rem"]}
+                        borderRadius="lg"
+                    />
                 ))}
             </div>
 
@@ -98,7 +114,15 @@ const DescriptionBlog = () => {
 
             <div className="flex items-center justify-around flex-wrap w-full gap-5 my-8">
                 {post.imageThree && post.imageThree.map(img => (
-                    <p className="w-[10rem] h-[10rem] border-2 border-solid border-black">Imagen: {img}</p>
+                    <Image
+                        key={img}
+                        src={img}
+                        alt="Blog Image"
+                        objectFit="cover"
+                        loading="lazy"
+                        width={["15rem", "15rem"]}
+                        borderRadius="lg"
+                    />
                 ))}
             </div>
 

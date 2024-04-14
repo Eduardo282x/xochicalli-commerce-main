@@ -98,7 +98,7 @@ const ProductCard: FC<Product> = (product): JSX.Element => {
 
     return (
         <Box sx={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
-            <Box h='330px' w='256px' onClick={toProduct} border='2px solid #e2e8f0' borderRadius='md' overflow='hidden'>
+            <Box h='auto' w='auto' onClick={toProduct} border='2px solid #e2e8f0' borderRadius='md' overflow='hidden'>
                 <Box
                     sx={{
                         display: 'flex',
@@ -113,22 +113,22 @@ const ProductCard: FC<Product> = (product): JSX.Element => {
                     }}
                 ></Box>
                 <Box>
-                    <Box px={1}>
+                    <Box px={2}>
                         <Text fontSize='2xl' as='b'>{truncateText(product.title, 20)}</Text>
                     </Box>
-                    <Box sx={{ display: 'flex', width: '100%', justifyContent: 'space-between' }} px={1}>
+                    <Box sx={{ display: 'flex', width: '100%', justifyContent: 'space-between' }} px={2}>
                         <Text fontSize='md' >{truncateText(product.description, 20)}</Text>
                         <Text fontSize='2xl' as='b' sx={{ marginTop: '-9px' }}>{newPrice} </Text>
                     </Box>
                 </Box>
-            </Box>
-            <Box sx={{ display: 'flex', width: '100%', justifyContent: 'center' }}>
-                <Button
-                    sx={{ width: '80%' }}
-                    leftIcon={<FiShoppingCart size={22} />}
-                    onClick={addItemToCart}
-                    colorScheme='purple'
-                ></Button>
+                <Box sx={{ display: 'flex', width: '100%', justifyContent: 'center', my: '.5rem' }}>
+                    <Button
+                        sx={{ width: '100%', mx: '.5rem' }}
+                        leftIcon={<FiShoppingCart size={22} />}
+                        onClick={addItemToCart}
+                        colorScheme='purple'
+                    ></Button>
+                </Box>
             </Box>
         </Box>
 

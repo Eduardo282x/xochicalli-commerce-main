@@ -16,12 +16,12 @@ export const buttonsSelects: Btns[] = [
     },
     {
         label: 'Plantas',
-        value: 'Plantas',
+        value: 'plantas',
         active: false,
     },
     {
         label: 'Fertilizantes',
-        value: 'Fertilizantes',
+        value: 'insumos',
         active: false,
     },
     {

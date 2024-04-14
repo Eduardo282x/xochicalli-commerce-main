@@ -44,9 +44,9 @@ const AddProduct: FC = (): JSX.Element => {
     try {
       console.log('Productos', values);
       
-      // const submit = await addProduct(values)
-      // console.log(submit)
-      // setId(submit)
+      const submit = await addProduct(values)
+      console.log(submit)
+      setId(submit)
       toast({
         title: "Producto subido correctamente",
         duration: 2000,
