@@ -135,7 +135,7 @@ const Product: FC = (): JSX.Element => {
               </Suspense>
 
               <Accordion marginTop={'10px'} allowToggle >
-                <AccordionItem sx={{borderBottom:'none'}}>
+                <AccordionItem sx={{ borderBottom: 'none' }}>
                   <h2>
                     <AccordionButton>
                       <Box fontWeight={700} as="span" flex='1' textAlign='center'>
@@ -145,8 +145,8 @@ const Product: FC = (): JSX.Element => {
                       <AccordionIcon />
                     </AccordionButton>
                   </h2>
-                  <AccordionPanel sx={{border:'1px', borderColor:'#ddd', padding:'0', borderRadius:'.5rem'}}>
-                    {product && 
+                  <AccordionPanel sx={{ border: '1px', borderColor: '#ddd', padding: '0', borderRadius: '.5rem' }}>
+                    {product &&
                       <ProductDetails products={product}></ProductDetails>
                     }
                   </AccordionPanel>

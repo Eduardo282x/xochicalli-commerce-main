@@ -1,22 +1,22 @@
 import { FC, lazy, useContext } from "react";
 
-import { Routes, Route, Outlet, Navigate } from "react-router-dom";
+import { Routes, Route, Outlet, useLocation, Navigate } from "react-router-dom";
 
 import { CartContext, UserContext } from "@/context";
 import { PrivateRoute } from "@/components/auth";
 import { Navbar } from "@/components";
-// import { Box } from "@chakra-ui/react";
+import { Box } from "@chakra-ui/react";
 
 // Lazy load components
 const AdminNavbar = lazy(() => import("@/components/admin/Navbar"));
 const LoggedUserRedirect = lazy(
     () => import("@/components/auth/LoggedUserRedirect")
 );
-// const WhatsAppButton = lazy(() => import("@/components/WhatsAppButton"));
-// const FloatButton = lazy(() => import("@/components/Floatbutton"));
-// const Footer = lazy(() => import("@/components/Footer"));
+const WhatsAppButton = lazy(() => import("@/components/WhatsAppButton"));
+const FloatButton = lazy(() => import("@/components/Floatbutton"));
 const LoggedUserNavbar = lazy(() => import("@/components/ui/LoggedUserNavbar"));
 const ModNavbar = lazy(() => import("@/components/ui/ModNavbar"));
+const Footer = lazy(() => import("@/components/Footer"));
 
 // Public routes
 const Home = lazy(() => import("@/pages/home/Home"));
@@ -33,7 +33,6 @@ const Faqs = lazy(() => import("@/pages/faqs/index"));
 const Questions = lazy(() => import("@/pages/questions/index"));
 const PublicBlog = lazy(() => import("@/pages/admin/blog/ShowSectionUser"));
 const PublicBlogDescroption = lazy(() => import("@/pages/admin/blog/DescriptionUser"));
-const PublicBlogDescroptionNew = lazy(() => import("@/pages/admin/blog/newblog/descriptionBlog"));
 
 // Normal user routes
 const UserProfile = lazy(() => import("@/pages/user/UserProfile"));
@@ -52,11 +51,11 @@ const Comentarios = lazy(() => import("@/pages/admin/comentarios/page"));
 const BlogAdminCreate = lazy(() => import("@/pages/admin/blog/CreateSection"));
 const BlogAdminShow = lazy(() => import("@/pages/admin/blog/ShowSecttionAdmin"));
 const BlogAdminUpdate = lazy(() => import("@/pages/admin/blog/UpdateSection"));
-// const BlogAdminDescription = lazy(() => import("@/pages/admin/blog/DescriptionAdmin"));
+const BlogAdminDescription = lazy(() => import("@/pages/admin/blog/DescriptionAdmin"));
 
 const NavbarRenderer: FC = (): JSX.Element => {
     const { user, userRole } = useContext(UserContext);
-    
+
     if (user) {
         if (userRole === "admin") return <AdminNavbar isUser={user} />;
         if (userRole === "user") return <LoggedUserNavbar />;
@@ -69,14 +68,13 @@ const NavbarRenderer: FC = (): JSX.Element => {
 export const App: FC = (): JSX.Element => {
     const { cart } = useContext(CartContext);
 
-    // const { pathname } = useLocation();
+    const { pathname } = useLocation();
 
     return (
         <>
-            
-            {/* <Box id="router"> */}
+            <NavbarRenderer />
+            <Box id="router">
                 <Routes>
-                    <Route element={<NavbarRenderer />}>
                     <Route index element={<Home />} />
                     <Route path="/login" element={<LoggedUserRedirect />} />
                     <Route path="/signup" element={<LoggedUserRedirect />} />
@@ -88,7 +86,6 @@ export const App: FC = (): JSX.Element => {
                     <Route path="/questions" element={<Questions />} />
                     <Route path="/blog" element={<PublicBlog />} />
                     <Route path="/blog-description" element={<PublicBlogDescroption />} />
-                    <Route path="/blog-description-new" element={<PublicBlogDescroptionNew />} />
                     <Route path="/contact" element={<Contact />} />
                     <Route path="/privacy-policy" element={<PrivacyPolicy />} />
                     <Route path="/checkout" element={cart.length < 1 ? <Navigate to="/cart" /> : <Checkout />} />
@@ -172,10 +169,10 @@ export const App: FC = (): JSX.Element => {
                             }
                         />
                         <Route
-                            path="blog-description-new"
+                            path="blog-description"
                             element={
                                 <PrivateRoute allowedRoles="admin">
-                                    <PublicBlogDescroptionNew />
+                                    <BlogAdminDescription />
                                 </PrivateRoute>
                             }
                         />
@@ -224,10 +221,14 @@ export const App: FC = (): JSX.Element => {
                     </Route>
 
                     <Route path="*" element={<NotFound />} />
-                  </Route>
                 </Routes>
-            {/* </Box> */}
-
+            </Box>
+            {pathname !== "/checkout" && <Box>
+                <WhatsAppButton />
+                <FloatButton />
+            </Box>
+            }
+            {pathname !== "/checkout" && <Footer />}
 
         </>
     );

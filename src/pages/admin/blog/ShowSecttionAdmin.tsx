@@ -51,6 +51,11 @@ const ShowSecttionAdmin = () => {
       questionDocs.push(postData);
     });
 
+    questionDocs[0].nameBlog = 'blogWater';
+    questionDocs[1].nameBlog = 'blogCareful';
+    questionDocs[2].nameBlog = 'blogImprove';
+    questionDocs[3].nameBlog = 'blogMedicine';
+
     setBlogPosts(questionDocs);
     console.log(questionDocs);
     setLoading(false);
@@ -153,7 +158,7 @@ const ShowSecttionAdmin = () => {
               maxW='sm'
               borderWidth='2px'
               borderColor='gray.300'
-              onClick={() => navigate(`/admin/blog-description`, { state: { post } })}
+              onClick={() => navigate(`/admin/blog-description-new`, { state: post.nameBlog })}
             >
               <Box>
                 <Image

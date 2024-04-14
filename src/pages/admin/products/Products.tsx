@@ -33,7 +33,7 @@ const Products: FC = (): JSX.Element => {
           <ProductCardSkeleton />
         ) : products.length !== 0 ? (
           <VStack gap={6}>
-            <HStack wrap='wrap' gap={6} justifyContent='center'>
+            <HStack className="flex items-center justify-center gap-8 flex-wrap w-[98%] h-full py-5">
               {products
                 .slice(more - 3, more)
                 .map(
@@ -66,7 +66,7 @@ const Products: FC = (): JSX.Element => {
                 )}
             </HStack>
             {products.length >= 4 && (
-              <ButtonGroup mt={8} mb={8}>
+              <ButtonGroup mt={8} mb={8} pb={4}>
                 <Button
                   onClick={handlePrevProd}
                   colorScheme='blue'

@@ -33,7 +33,7 @@ const AddProduct: FC = (): JSX.Element => {
     Recomendaciones: []
   });
 
-  console.log("vlaue-2:::>", value);
+  // console.log("vlaue-2:::>", value);
   const navigate = useNavigate();
   const handleGoProducts = () => {
     navigate("/admin/add");
@@ -42,6 +42,8 @@ const AddProduct: FC = (): JSX.Element => {
   const toProduct = (id: string) => navigate(`/products/${id}`);
   const onSubmit = async (values: Value) => {
     try {
+      console.log('Productos', values);
+      
       const submit = await addProduct(values)
       console.log(submit)
       setId(submit)
@@ -82,8 +84,10 @@ const AddProduct: FC = (): JSX.Element => {
           ) : step2 === false ? (
             <>
               <FirstStep setValue={setValue} values={value} />
-              <Button onClick={() => setStep1(false)}>{"Atrás"}</Button>
-              <Button onClick={() => setStep2(true)}>{"Siguiente"}</Button>
+              <div className="flex items-center justify-between w-full">
+                <Button onClick={() => setStep1(false)}>{"Atrás"}</Button>
+                <Button onClick={() => setStep2(true)}>{"Siguiente"}</Button>
+              </div>
             </>
           ) : (
             <>

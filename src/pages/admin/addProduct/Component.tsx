@@ -124,6 +124,7 @@ export const Tags = (name: string, handle: any, values: any, setValue: any) => {
         <>
             <Text>{letterToUpperCase(name)}</Text>
             <TagsInput
+                inputProps={{placeholder:'Agregar etiqueta'}}
                 value={values[name] ?? []}
                 onChange={(event: any) => {
                     setValue((prevState: any) => ({
