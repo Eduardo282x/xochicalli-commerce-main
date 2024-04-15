@@ -27,7 +27,7 @@ const ProductsHome: FC<Product> = (product): JSX.Element => {
 
 
     return (
-        <Box h='450px' w='300px' onClick={toProduct} border='2px solid #e2e8f0' borderRadius='md' overflow='hidden' className=' cursor-pointer'>
+        <Box h='450px' w='300px' onClick={toProduct} border='2px solid #e2e8f0' borderRadius='md' overflow='hidden' className='bg-white cursor-pointer'>
             <Box
                 sx={{
                     display: 'flex',
