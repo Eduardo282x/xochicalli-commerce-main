@@ -56,17 +56,16 @@ const Home: FC = (): JSX.Element => {
 
   console.log(sortedProducts);
 
-  const imagesCarousel = sortedProducts.map(img => {return img.image});
+  const imagesCarousel = sortedProducts.map(img => { return img.image });
   console.log(imagesCarousel);
-  
+
 
   const imageHeight2 = useBreakpointValue({ sm: 256, md: 512 }) || 256;
   const textW = useBreakpointValue({ sm: 8, md: 48 }) || 8;
   const gridColumnCount = useBreakpointValue({ base: 1, sm: 3 });
 
   return (
-    <Box overflowX="hidden"
-      bgGradient="linear(to-b, white, gray.100)" >
+    <Box overflowX="hidden" className=" bg-gray-200">
       <Helmet>
         <title>Xochicalli Commerce</title>
       </Helmet>
@@ -76,7 +75,7 @@ const Home: FC = (): JSX.Element => {
         speed={100}
         slidesToShow={1}
         slidesToScroll={1}
-        autoplay  
+        autoplay
         autoplaySpeed={2000}
       >
         {images.map((image, index) => (
@@ -123,7 +122,27 @@ const Home: FC = (): JSX.Element => {
             ) : products.length !== 0 ? (
               <VStack gap={6} className="w-[60%] overflow-hidden" >
 
-                <Carousel items={sortedProducts}></Carousel>
+                <Carousel items={sortedProducts} typeCarousel="ProductsHome"></Carousel>
+
+                <div className="w-full relative">
+                  <div className="absolute -top-5 left-0 right-0 mx-auto text-xl bg-green-500 text-white w-[40%] rounded-lg p-2 text-center">
+                    <p>Beneficios de comprar en Xochicalli Commerce</p>
+                  </div>
+                  <div className="flex items-center justify-around bg-white rounded-lg shadow-2xl w-full px-4 py-8">
+                    <div className="text-2xl h-[5rem] flex items-center justify-center gap-5">
+                      <span className="material-symbols-outlined text-green-600 scale-150">local_shipping</span>
+                      <p>Envio gratis</p>
+                    </div>
+                    <div className="text-2xl h-[5rem] flex items-center justify-center gap-5">
+                      <span className="material-symbols-outlined text-green-600 scale-150">stars</span>
+                      <p>Productos exclusivos</p>
+                    </div>
+                    <div className="text-2xl h-[5rem] flex items-center justify-center gap-5">
+                      <span className="material-symbols-outlined text-green-600 scale-150">verified_user</span>
+                      <p>Compras seguras</p>
+                    </div>
+                  </div>
+                </div>
 
                 {/* <Grid
                   height='100%'
@@ -185,8 +204,10 @@ const Home: FC = (): JSX.Element => {
             {loading ? (
               <Spinner size='xl' />
             ) : products.length !== 0 ? (
-              <VStack gap={6} px={6}>
-                <Grid
+              <VStack gap={6} px={6} className="w-[60%] overflow-hidden">
+
+                <Carousel items={sortedProducts} typeCarousel="ProductsCardCategory"></Carousel>
+                {/* <Grid
                   height='100%'
                   templateColumns={[
                     "repeat(1, 1fr)",
@@ -230,7 +251,7 @@ const Home: FC = (): JSX.Element => {
                         );
                       }
                     )}
-                </Grid>
+                </Grid> */}
               </VStack>
             ) : (
               <Text fontWeight='medium'>No hay productos 😓</Text>
@@ -238,8 +259,8 @@ const Home: FC = (): JSX.Element => {
           </Center>
         </Box>
       </Box>
-      <Box sx={{ mt: 8, px: 8 }} >
 
+      <Box sx={{ mt: 8, px: 8 }}>
         <Box sx={{ display: 'flex', flexDirection: 'column', mb: 8 }}>
           <Text fontSize='3xl' as='b' textAlign='center'>Las Favoritas de Xochicalli </Text>
         </Box>
@@ -261,7 +282,6 @@ const Home: FC = (): JSX.Element => {
               <Image src='https://begreen.imgix.net/6481ccba60099747797800.jpg?auto=format,compress' alt='Dan Abramov' height="256px" width='100%' />
             </Box>
           </Box>
-
         </Box>
       </Box>
 
@@ -269,39 +289,41 @@ const Home: FC = (): JSX.Element => {
         <Box sx={{ display: 'flex', flexDirection: 'column' }}>
           <Text fontSize='3xl' as='b' textAlign='center'>¿Por qué Xochicalli es tan especial?</Text>
         </Box>
-        <Grid
+        <div className="flex items-center justify-around w-full my-5">
+        {/* <Grid
           templateColumns={`repeat(${gridColumnCount}, 1fr)`}
           gap={4}
           justifyItems="center"
-        >
-          <GridItem>
-            <Box p={5} boxShadow="md" sx={{ display: 'flex' }}>
+        > */}
+          {/* <GridItem> */}
+            <Box p={5} boxShadow="md" sx={{ display: 'flex' }} className=" bg-white rounded-xl w-[25%]">
               <Image src='https://be.green/build/images/tree-icons-1.png' alt='Dan Abramov' height="100px" width={100} />
               <Box mx={2}>
                 <Text fontSize='lg' as='b'>¡Plantas felices directo a casa!</Text>
                 <Text fontSize='md'>Sanas y felices, directas del invernadero a tu casa.</Text>
               </Box>
             </Box>
-          </GridItem>
-          <GridItem>
-            <Box p={5} boxShadow="md" sx={{ display: 'flex' }}>
+          {/* </GridItem> */}
+          {/* <GridItem> */}
+            <Box p={5} boxShadow="md" sx={{ display: 'flex' }} className=" bg-white rounded-xl w-[30%]">
               <Image src='https://be.green/build/images/tree-icons-2.png' alt='Dan Abramov' height="100px" width={100} />
               <Box mx={2}>
                 <Text fontSize='lg' as='b'>Accesorios únicos</Text>
                 <Text fontSize='md'>Decora combinando plantas y macetas para crear espacios excepcionales.</Text>
               </Box>
             </Box>
-          </GridItem>
-          <GridItem>
-            <Box p={5} boxShadow="md" sx={{ display: 'flex' }}>
+          {/* </GridItem> */}
+          {/* <GridItem> */}
+            <Box p={5} boxShadow="md" sx={{ display: 'flex' }} className=" bg-white rounded-xl w-[30%]">
               <Image src='https://be.green/build/images/tree-icons-3.png' alt='Dan Abramov' height="100px" width={100} />
               <Box mx={2}>
                 <Text fontSize='lg' as='b'>Estamos aquí para ti​</Text>
                 <Text fontSize='md'>Te ayudamos a cuidar tus plantas con nuestro servicio personalizado.</Text>
               </Box>
             </Box>
-          </GridItem>
-        </Grid>
+          {/* </GridItem> */}
+        {/* </Grid> */}
+        </div>
       </Box>
     </Box>
   );
