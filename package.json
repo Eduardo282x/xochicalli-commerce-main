@@ -6,6 +6,7 @@
   "homepage": "https://Eduardo282x.github.io/xochicalli-commerce-main/",
   "scripts": {
     "predeploy": "npm run build",
+    "deploy": "gh-pages -d dist",
     "dev": "vite --host",
     "build": "tsc && vite build",
     "lint": "eslint --max-warnings=0 src",
