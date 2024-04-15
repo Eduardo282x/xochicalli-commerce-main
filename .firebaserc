@@ -1,5 +1,8 @@
 {
   "projects": {
-    "default": "xochicalli-commerce"
-  }
+    "default": "xochimilco-commerce",
+    "xochimilco-commerce": "xochimilco-commerce"
+  },
+  "targets": {},
+  "etags": {}
 }

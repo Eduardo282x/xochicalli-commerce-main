@@ -6,13 +6,13 @@ import { FirebaseStorage, getStorage, ref, uploadBytes, getDownloadURL } from 'f
 import { v4 } from "uuid";
 
 export const firebaseConfig = {
-  apiKey: "AIzaSyBQxvYvalPyyVzzYu6ey9XrHllO1XHJU5I",
-  authDomain: "xochicalli-commerce.firebaseapp.com",
-  projectId: "xochicalli-commerce",
-  storageBucket: "xochicalli-commerce.appspot.com",
-  messagingSenderId: "1065447557124",
-  appId: "1:1065447557124:web:89a3b272c996a79f214d51",
-  measurementId: "G-L3DNKLN90J"
+  apiKey: "AIzaSyDWUWeXqoFdp_Cnc9pNp48IXQMjHDgbWis",
+  authDomain: "xochimilco-commerce.firebaseapp.com",
+  projectId: "xochimilco-commerce",
+  storageBucket: "xochimilco-commerce.appspot.com",
+  messagingSenderId: "547984527113",
+  appId: "1:547984527113:web:6cea7d9cff2341dfda8dd8",
+  measurementId: "G-9J6D2N61DH"
 };
 
 export const app: FirebaseApp = initializeApp(firebaseConfig);
