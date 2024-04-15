@@ -1,4 +1,4 @@
-import { FC, useContext, useEffect } from "react";
+import { FC, lazy, useContext, useEffect } from "react";
 
 import {
     Accordion, AccordionButton, AccordionIcon, Icon, AccordionItem, AccordionPanel,
@@ -8,9 +8,9 @@ import {
 } from "@chakra-ui/react";
 import { FiBox, FiMenu, FiShoppingCart, FiUser, FiMessageSquare, FiMail, FiLogOut } from "react-icons/fi";
 import { Outlet, Link as RouterLink, useNavigate } from "react-router-dom";
-
 import { UserContext, CartContext } from "@/context";
 import { logOut } from "@/utils";
+const Footer = lazy(() => import("@/components/Footer"));
 
 const links = [
     {
@@ -298,6 +298,8 @@ const LoggedUserNavbar: FC = (): JSX.Element => {
                         </Box>
                     </HStack>
                     <Outlet/>
+
+                    <Footer />
                 </Flex>
             }
         </>

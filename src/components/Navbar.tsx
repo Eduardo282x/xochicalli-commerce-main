@@ -22,6 +22,7 @@ import {
   FiMail,
 } from "react-icons/fi";
 import { Outlet, Link as RouterLink, useNavigate } from "react-router-dom";
+import Footer from "./Footer";
 
 const links = [
   {
@@ -229,6 +230,7 @@ export const Navbar: FC = (): JSX.Element => {
         </Flex>
       )}
       <Outlet/>
+      <Footer/>
     </React.Fragment>
   );
 };
