@@ -54,7 +54,7 @@ export default defineConfig({
     },
   }),
   ],
-  base: "/xochicalli-commerce-main/",
+  base: "https://Eduardo282x.github.io/xochicalli-commerce-main/",
   server: {
     watch: {
       usePolling: true,
