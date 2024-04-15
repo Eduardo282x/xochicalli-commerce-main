@@ -12,7 +12,7 @@ export const firebaseConfig = {
   storageBucket: "xochicalli-commerce.appspot.com",
   messagingSenderId: "1065447557124",
   appId: "1:1065447557124:web:89a3b272c996a79f214d51",
-  measurementId: "G-L3DNKLN90J",
+  measurementId: "G-L3DNKLN90J"
 };
 
 export const app: FirebaseApp = initializeApp(firebaseConfig);

@@ -54,6 +54,7 @@ export default defineConfig({
     },
   }),
   ],
+  base: "/xochicalli-commerce-main/",
   server: {
     watch: {
       usePolling: true,
