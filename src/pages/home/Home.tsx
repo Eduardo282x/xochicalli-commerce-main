@@ -124,12 +124,12 @@ const Home: FC = (): JSX.Element => {
 
                 <Carousel items={sortedProducts} typeCarousel="ProductsHome"></Carousel>
 
-                <div className="w-full relative">
-                  <div className="absolute -top-5 left-0 right-0 mx-auto text-xl bg-green-500 text-white w-[40%] rounded-lg p-2 text-center">
+                <div className="w-full relative h-auto hidden lg:flex">
+                  <div className="absolute -top-5 left-0 right-0 mx-auto text-xl bg-green-500 text-white w-[80%] lg:w-[60%] rounded-lg p-2 text-center">
                     <p>Beneficios de comprar en Xochicalli Commerce</p>
                   </div>
-                  <div className="flex items-center justify-around bg-white rounded-lg shadow-2xl w-full px-4 py-8">
-                    <div className="text-2xl h-[5rem] flex items-center justify-center gap-5">
+                  <div className="flex flex-wrap items-center gap-5 justify-around bg-white rounded-lg shadow-2xl w-full px-4 py-8">
+                    <div className="text-2xl h-[5rem] flex items-center justify-center gap-5 mt-16 md:mt-0">
                       <span className="material-symbols-outlined text-green-600 scale-150">local_shipping</span>
                       <p>Envio gratis</p>
                     </div>
@@ -289,14 +289,14 @@ const Home: FC = (): JSX.Element => {
         <Box sx={{ display: 'flex', flexDirection: 'column' }}>
           <Text fontSize='3xl' as='b' textAlign='center'>¿Por qué Xochicalli es tan especial?</Text>
         </Box>
-        <div className="flex items-center justify-around w-full my-5">
+        <div className="flex flex-wrap items-center justify-around w-full my-5 gap-8 lg:gap-0">
         {/* <Grid
           templateColumns={`repeat(${gridColumnCount}, 1fr)`}
           gap={4}
           justifyItems="center"
         > */}
           {/* <GridItem> */}
-            <Box p={5} boxShadow="md" sx={{ display: 'flex' }} className=" bg-white rounded-xl w-[25%]">
+            <Box p={5} boxShadow="md" sx={{ display: 'flex' }} className=" bg-white rounded-xl w-full lg:w-[25%]">
               <Image src='https://be.green/build/images/tree-icons-1.png' alt='Dan Abramov' height="100px" width={100} />
               <Box mx={2}>
                 <Text fontSize='lg' as='b'>¡Plantas felices directo a casa!</Text>
@@ -305,7 +305,7 @@ const Home: FC = (): JSX.Element => {
             </Box>
           {/* </GridItem> */}
           {/* <GridItem> */}
-            <Box p={5} boxShadow="md" sx={{ display: 'flex' }} className=" bg-white rounded-xl w-[30%]">
+            <Box p={5} boxShadow="md" sx={{ display: 'flex' }} className=" bg-white rounded-xl w-full lg:w-[30%]">
               <Image src='https://be.green/build/images/tree-icons-2.png' alt='Dan Abramov' height="100px" width={100} />
               <Box mx={2}>
                 <Text fontSize='lg' as='b'>Accesorios únicos</Text>
@@ -314,7 +314,7 @@ const Home: FC = (): JSX.Element => {
             </Box>
           {/* </GridItem> */}
           {/* <GridItem> */}
-            <Box p={5} boxShadow="md" sx={{ display: 'flex' }} className=" bg-white rounded-xl w-[30%]">
+            <Box p={5} boxShadow="md" sx={{ display: 'flex' }} className=" bg-white rounded-xl w-full lg:w-[30%]">
               <Image src='https://be.green/build/images/tree-icons-3.png' alt='Dan Abramov' height="100px" width={100} />
               <Box mx={2}>
                 <Text fontSize='lg' as='b'>Estamos aquí para ti​</Text>

@@ -24,29 +24,29 @@ const DescriptionBlog = () => {
     }
 
     return (
-        <div className={`flex flex-col items-center justify-start w-full h-auto px-16 bg-gray-300 px-16 ${location.pathname.includes('admin') && 'mx-16'}`}>
+        <div className={`flex flex-col items-center justify-start w-full h-auto px-4 lg:px-16 bg-gray-300 px-16 ${location.pathname.includes('admin') && 'mx-16'}`}>
 
-            <Box sx={{ display: { sm: 'none', md: 'flex' }, width: '100%', marginY: '2rem'}}>
+            <Box className="my-4 overflow-x-auto flex items-center justify-start w-full">
                 <IconButton
                     fontSize='2xl'
                     aria-label='Eliminar'
                     icon={<ArrowBackIcon />}
                     onClick={() => navigate(-1)}
                 />
-                <Breadcrumb className=" font-semibold">
+                <Breadcrumb className="font-semibold">
                     <BreadcrumbItem>
-                        <BreadcrumbLink onClick={() => navigate(-1)} className="hover:bg-white rounded-lg px-4 py-2 !no-underline">Blog</BreadcrumbLink>
+                        <BreadcrumbLink onClick={() => navigate(-1)} className="hover:bg-white rounded-lg px-4 py-2 !no-underline ">Blog</BreadcrumbLink>
                     </BreadcrumbItem>
                     <BreadcrumbItem>
-                        <BreadcrumbLink onClick={() => navigate(-1)} className="hover:bg-white rounded-lg px-4 py-2 !no-underline">{post.category}</BreadcrumbLink>
+                        <BreadcrumbLink onClick={() => navigate(-1)} className="hover:bg-white rounded-lg px-4 py-2 !no-underline w-[11rem] lg:w-auto">{post.category}</BreadcrumbLink>
                     </BreadcrumbItem>
                     <BreadcrumbItem isCurrentPage>
-                        <BreadcrumbLink>{post.title}</BreadcrumbLink>
+                        <BreadcrumbLink className=" w-[20rem] lg:w-auto">{post.title}</BreadcrumbLink>
                     </BreadcrumbItem>
                 </Breadcrumb>
             </Box>
 
-            <div className="bg-white w-full px-8 py-4 mb-4 rounded-xl shadow-xl">
+            <div className="bg-white w-full px-2 py-4 lg:py-8 mb-4 rounded-xl shadow-xl">
                 <p className="font-bold text-xl">Indice</p>
                 <ol className="ml-4">
                     {post.index && post.index.map((list: string, ind: number) => (

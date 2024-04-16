@@ -33,7 +33,7 @@ const Faqs = lazy(() => import("@/pages/faqs/index"));
 const Questions = lazy(() => import("@/pages/questions/index"));
 const PublicBlog = lazy(() => import("@/pages/admin/blog/ShowSectionUser"));
 const PublicBlogDescroption = lazy(() => import("@/pages/admin/blog/DescriptionUser"));
-const PublicBlogDescroptionNew = lazy(() => import("@/pages/admin/blog/newblog/descriptionBlog"));
+const PublicBlogDescroptionNew = lazy(() => import("@/pages/admin/blog/newblog/DescriptionBlog"));
 
 // Normal user routes
 const UserProfile = lazy(() => import("@/pages/user/UserProfile"));
